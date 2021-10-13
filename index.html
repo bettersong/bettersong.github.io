@@ -339,8 +339,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2021/10/13/git/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2021/10/13/git/" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/10/13/git/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -516,8 +515,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2021/10/12/test/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2021/10/12/test/" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/10/12/test/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -686,8 +684,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2021/10/11/hexo/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2021/10/11/hexo/" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/10/11/hexo/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1036,8 +1033,6 @@ layout指页面布局，默认为post，可以通过修改__config.yml中的defa
   
 
     
-      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
-    
 
     
 
@@ -1055,10 +1050,6 @@ layout指页面布局，默认为post，可以通过修改__config.yml中的defa
   
 
 
-
-
-
-  
 
 
 
@@ -1080,7 +1071,7 @@ layout指页面布局，默认为post，可以通过修改__config.yml中的defa
     });
     new Valine({
         el: '#comments' ,
-        verify: false,
+        verify: true,
         notify: true,
         appId: 'wDxOQGAiCHeiIi0Dz7A7lfmS-gzGzoHsz',
         appKey: 'NXodSccyH1EXXRVHD2bPQoVa',
