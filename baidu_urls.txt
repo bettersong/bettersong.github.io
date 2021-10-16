@@ -1,5 +1,4 @@
 https://bettersong.github.io/2021/10/16/this-call-apply-bind/
 https://bettersong.github.io/2021/10/14/eventloop/
 https://bettersong.github.io/2021/10/13/git/
-https://bettersong.github.io/2021/10/12/test/
 https://bettersong.github.io/2021/10/11/hexo/
