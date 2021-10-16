@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="XhjQWCtIiyDW5It6nYDFSdPNOaswmQKDj5vZOe3XAWg" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="code-rXQQcHP9V1" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="前端," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="this指向与call,apply,bind this问题对于每个前端同学来说相信都不陌生，在平时开发中也经常能碰到，有时候因为this还踩过不少坑，并且this问题在面试题中出现的概率也非常高，我们一起来了解一下this的指向与call，apply，bind  this的指向ES5中的this在ES5中，this一般指向函数调用时所在的执行环境，与函数定义的位置无关。也可以理解成this永远指向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="this-call-apply-bind">
+<meta property="og:url" content="https://bettersong.github.io/2021/10/16/this-call-apply-bind/index.html">
+<meta property="og:site_name" content="南玖blog">
+<meta property="og:description" content="this指向与call,apply,bind this问题对于每个前端同学来说相信都不陌生，在平时开发中也经常能碰到，有时候因为this还踩过不少坑，并且this问题在面试题中出现的概率也非常高，我们一起来了解一下this的指向与call，apply，bind  this的指向ES5中的this在ES5中，this一般指向函数调用时所在的执行环境，与函数定义的位置无关。也可以理解成this永远指向">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-10-16T03:33:20.000Z">
+<meta property="article:modified_time" content="2021-10-16T03:34:28.562Z">
+<meta property="article:author" content="songyao">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://bettersong.github.io/2021/10/16/this-call-apply-bind/"/>
+
+
+
+
+
+  <title>this-call-apply-bind | 南玖blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">南玖blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">学习点滴📖</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://bettersong.github.io/2021/10/16/this-call-apply-bind/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="songyao">
+      <meta itemprop="description" content="欢迎关注微信公众号：前端南玖">
+      <meta itemprop="image" content="/uploads/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="南玖blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">this-call-apply-bind</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-10-16T11:33:20+08:00">
+                2021-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">javaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/10/16/this-call-apply-bind/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/10/16/this-call-apply-bind/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2021/10/16/this-call-apply-bind/" class="leancloud_visitors" data-flag-title="this-call-apply-bind">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="this指向与call-apply-bind"><a href="#this指向与call-apply-bind" class="headerlink" title="this指向与call,apply,bind"></a>this指向与call,apply,bind</h3><blockquote>
+<p><strong>this</strong>问题对于每个前端同学来说相信都不陌生，在平时开发中也经常能碰到，有时候因为<strong>this</strong>还踩过不少坑，并且<strong>this</strong>问题在面试题中出现的概率也非常高，我们一起来了解一下<code>this</code>的指向与<code>call</code>，<code>apply</code>，<code>bind</code></p>
+</blockquote>
+<h4 id="this的指向"><a href="#this的指向" class="headerlink" title="this的指向"></a>this的指向</h4><h5 id="ES5中的this"><a href="#ES5中的this" class="headerlink" title="ES5中的this"></a>ES5中的this</h5><p><strong>在ES5中，this一般指向函数调用时所在的执行环境，与函数定义的位置无关。也可以理解成this永远指向最后调用它的对象</strong></p>
+<ul>
+<li>在普通函数中的this总是指向它的<strong>直接调用者</strong>，默认情况下指向全局对象（浏览器为window）</li>
+<li>在严格模式下，没有直接调用者的函数中的<code>this</code>为<code>undefined</code></li>
+<li>Call, apply,bind函数，this指向的是绑定的对象</li>
+<li>对象函数调用，this指向调用它的那个对象</li>
+<li>构造函数中的this，指向该构造函数new出来的实例对象</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    <span class="attr">a</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">this</span>)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">this</span>.b)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">this</span>.c)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">this</span>.a)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">b</span>:<span class="number">2</span>,</span><br><span class="line">    <span class="attr">c</span>:<span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = obj.a</span><br><span class="line">b()</span><br><span class="line"><span class="comment">// 结果：window,f()&#123;...&#125;,undefined,undefined</span></span><br><span class="line">obj.a()</span><br><span class="line"><span class="comment">// 结果：&#123;a:..,b:2,c:3&#125;,2,3,f()&#123;...&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 解析：</span></span><br><span class="line"><span class="comment"> * b()调用，此时b函数所处的执行环境是全局环境，this指向window</span></span><br><span class="line"><span class="comment"> * obj.a()调用，此时a是作为对象方法进行调用，this指向调用对象obj</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="ES6中的this"><a href="#ES6中的this" class="headerlink" title="ES6中的this"></a>ES6中的this</h5><p><strong>在ES6中新增了一种箭头函数，箭头函数的this始终指向它定义时的this，而非执行时</strong></p>
+<ul>
+<li>箭头函数没有自己的this，它的this是继承来的，默认指向它定义时所在的对象，即<code>箭头函数中的this指向外层代码的this</code></li>
+<li>不可以当作构造函数，也就是说，不可以用<code>new</code>命令调用，否则会抛出一个错误</li>
+<li>箭头函数内没有<code>arguments</code>对象，可以用<code>rest</code>参数代替</li>
+<li>不可以使用<code>yield</code>命令，因此箭头函数不能用作<code>generator</code>函数</li>
+<li>箭头函数没有自己的<code>this</code>，所以不能用<code>call</code>，<code>apply</code>，<code>bind</code>这些方法改变this指向</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">            <span class="attr">hi</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="function">()=&gt;</span>&#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">sayHi</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">                    <span class="keyword">return</span> <span class="function">()=&gt;</span>&#123;</span><br><span class="line">                        <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">say</span>: <span class="function">()=&gt;</span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">const</span> hi = obj.hi()   <span class="comment">//this-&gt;obj对象</span></span><br><span class="line">        hi()   <span class="comment">// this-&gt;obj对象</span></span><br><span class="line">        <span class="keyword">const</span> sayHi = obj.sayHi()</span><br><span class="line">        <span class="keyword">const</span> sayHiBack = sayHi()  <span class="comment">//this-&gt;window</span></span><br><span class="line">        sayHiBack() <span class="comment">//this-&gt;window</span></span><br><span class="line">        obj.say() <span class="comment">//this-&gt;window</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>输出结果依次为obj对象，obj对象，window，window，window</strong></p>
+<blockquote>
+<p>解析：</p>
+<p>1.第一个obj.hi()很好理解，hi为普通函数，this指向调用它的那个对象，即obj</p>
+<p>2.第二个执行hi()，它其实是上一个执行后返回的函数，并且是箭头函数，箭头函数本身没有this，我们往他的上一级去查找，我们刚刚得出上一级的this为obj，所以这里的this也指向obj</p>
+<p>3.第三个执行obj.sayHi()，这里没有打印this，而是返回了一个普通函数</p>
+<p>4.第四个执行sayHi()，其实执行的是刚刚返回的那个普通函数，这里的this则指向调用它的那个对象，没有则指向window</p>
+<p>5.第五个执行sa yHiBack()，指向的是刚刚第四次执行返回的箭头函数，OK，箭头函数我们往上一层找，也是window</p>
+<p>5.第六个执行obj.say()，这里这个say()是一个箭头函数，当前代码块obj不存在this，只能往上一层查找，指向window</p>
+</blockquote>
+<h4 id="call-apply-bind的区别"><a href="#call-apply-bind的区别" class="headerlink" title="call, apply,bind的区别"></a>call, apply,bind的区别</h4><p>我们都知道<code>call，apply，bind</code>都可以用来改变<code>this</code>指向，但这三个函数稍稍有些不同。</p>
+<ul>
+<li>call与apply唯一的区别就是它们的传参方式不同，call从第二个参数开始都是传给函数的，apply只有两个参数，第二个参数是一个数组，传给函数的参数都写在这个数组里面</li>
+<li>call与apply改变了函数的this指向后会立即执行，而bind是改变函数的this指向并返回这个这个函数，不会立即执行</li>
+<li>call与apply的返回值是函数的执行结果，bind的返回值是改变了this指向的函数的拷贝</li>
+</ul>
+<h5 id="call"><a href="#call" class="headerlink" title="call"></a>call</h5><blockquote>
+<p><code>call()</code> 方法使用一个指定的 <code>this</code> 值和单独给出的一个或多个参数来调用一个函数。（来自MDN）</p>
+</blockquote>
+<p><strong>语法：</strong> <code>fun.call(thisArg,arg1[,arg2,arg3...])</code></p>
+<p><strong>解释：</strong> call方法用来为一个函数指定this对象，第一个参数是你想要指定的那个对象，后面都是传给该函数的参数，之间用逗号隔开</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  <span class="attr">name</span>:<span class="string">&#x27;南玖&#x27;</span>,</span><br><span class="line">  <span class="attr">gender</span>: <span class="string">&#x27;boy&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> speak = <span class="function"><span class="keyword">function</span>(<span class="params">age,hobbit</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`我是<span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>，今年<span class="subst">$&#123;age&#125;</span>岁，爱好<span class="subst">$&#123;hobbit&#125;</span>，欢迎优秀的你关注～`</span>)</span><br><span class="line">&#125;</span><br><span class="line">speak.call(person,<span class="number">18</span>,<span class="string">&#x27;前端开发&#x27;</span>) <span class="comment">// 我是南玖，今年18岁，爱好前端开发，欢迎优秀的你关注～</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h5><blockquote>
+<p><strong><code>apply()</code></strong> 方法调用一个具有给定<code>this</code>值的函数，以及以一个数组（或<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Indexed_collections#working_with_array-like_objects">类数组对象</a>）的形式提供的参数。（来自MDN）</p>
+</blockquote>
+<p><strong>语法：</strong> <code>fun.apply(thisArg,[arg1,arg2,arg3...])</code><br><strong>解释：</strong> apply方法与call方法基本类似，不同的是，两者的参数形式，apply方法传递的是一个由若干个参数组成的数组。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  <span class="attr">name</span>:<span class="string">&#x27;南玖&#x27;</span>,</span><br><span class="line">  <span class="attr">gender</span>: <span class="string">&#x27;boy&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">speak</span>(<span class="params">age,hobbit</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`我是<span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>，今年<span class="subst">$&#123;age&#125;</span>岁，爱好<span class="subst">$&#123;hobbit&#125;</span>，欢迎优秀的你关注～`</span>)</span><br><span class="line">&#125;</span><br><span class="line">speak.apply(person,[<span class="number">18</span>,<span class="string">&#x27;打篮球⛹️&#x27;</span>]) <span class="comment">//我是南玖，今年18岁，爱好打篮球⛹️，欢迎优秀的你关注～</span></span><br></pre></td></tr></table></figure>
+
+<p>#####bind</p>
+<blockquote>
+<p>bind() 方法会创建一个新函数。当这个新函数被调用时，bind() 的第一个参数将作为它运行时的 this，之后的一序列参数将会在传递的实参前传入作为它的参数。(来自于 MDN )</p>
+</blockquote>
+<p><strong>语法：</strong> <code>fun.bind(thisArg,arg1[,arg2,arg3...])()</code><br><strong>解释：</strong> bind方法用来为方法指定this对象并返回一个新的函数，它的参数与call函数一样。<strong>它本身是不会调用的，需要自己手动调用。</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  <span class="attr">name</span>:<span class="string">&#x27;南玖&#x27;</span>,</span><br><span class="line">  <span class="attr">gender</span>: <span class="string">&#x27;boy&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">speak</span>(<span class="params">age,hobbit</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`我是<span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>，今年<span class="subst">$&#123;age&#125;</span>岁，爱好<span class="subst">$&#123;hobbit&#125;</span>，欢迎优秀的你关注～`</span>)</span><br><span class="line">&#125;</span><br><span class="line">speak.bind(person,<span class="number">18</span>,<span class="string">&#x27;旅游⛱️&#x27;</span>)() <span class="comment">//我是南玖，今年18岁，爱好旅游⛱️，欢迎优秀的你关注～</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意这里需要自己再调用一次，因为bind只会返回这个改变了this指向的函数，并不会自己执行</strong></p>
+<h4 id="call，apply该用哪个？"><a href="#call，apply该用哪个？" class="headerlink" title="call，apply该用哪个？"></a>call，apply该用哪个？</h4><ul>
+<li>参数数量，顺序确定就用call，参数数量，顺序不确定就用apply</li>
+<li>参数数量少用call，参数数量多用apply</li>
+<li>参数集合已经是一个数组的情况，最好用apply</li>
+</ul>
+<h4 id="bind的应用场景"><a href="#bind的应用场景" class="headerlink" title="bind的应用场景"></a>bind的应用场景</h4><h5 id="1-保存参数"><a href="#1-保存参数" class="headerlink" title="1.保存参数"></a>1.保存参数</h5><p>我们先来看一道经典面试题</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;<span class="number">6</span>;i++)&#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i)  <span class="comment">// 6,6,6,6,6</span></span><br><span class="line">  &#125;,i*<span class="number">1000</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>相信大家都知道这里会打印出五个6，因为在执行settimeout回调函数时，i已经变成了6</p>
+<blockquote>
+<p>那么如何让它打印出1，2，3，4，5呢？</p>
+</blockquote>
+<p>当然方法有很多，比如闭包、将var改成let使它形成块级作用域，这里先不讲，后面单独讲闭包会提出来</p>
+<p>我们也可以用bind来解决</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;<span class="number">6</span>;i++)&#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i) <span class="comment">// 1,2,3,4,5</span></span><br><span class="line">  &#125;.bind(<span class="literal">null</span>,i),i*<span class="number">1000</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-回调函数this丢失问题"><a href="#2-回调函数this丢失问题" class="headerlink" title="2.回调函数this丢失问题"></a>2.回调函数this丢失问题</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> student = &#123;</span><br><span class="line">  <span class="attr">subject</span>:[<span class="string">&#x27;JS&#x27;</span>,<span class="string">&#x27;VUE&#x27;</span>,<span class="string">&#x27;REACT&#x27;</span>],</span><br><span class="line">  <span class="attr">study</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`我是南玖，我在学习<span class="subst">$&#123;<span class="built_in">this</span>.subject.join(<span class="string">&#x27;、&#x27;</span>)&#125;</span>`</span>)</span><br><span class="line">    &#125;.bind(<span class="built_in">this</span>),<span class="number">0</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">student.study() <span class="comment">//我是南玖，我在学习JS、VUE、REACT</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>想一想这里settimeout的回调如果不用bind绑定this，结果会怎样？</p>
+</blockquote>
+<p><strong>结果是报错，因为不给settimeout回调函数绑定this的话，那它的this应该指向的是全局window，全局没有subject，调用join会报错</strong></p>
+<h4 id="模拟call"><a href="#模拟call" class="headerlink" title="模拟call"></a>模拟call</h4><p><strong>思路：</strong></p>
+<ol>
+<li>根据call的规则设置上下文对象,也就是<code>this</code>的指向。</li>
+<li>通过设置<code>context</code>的属性,将函数的this指向到context上</li>
+<li>通过隐式绑定执行函数并传递参数。</li>
+<li>删除临时属性，返回函数执行结果</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.myCall = <span class="function"><span class="keyword">function</span>(<span class="params">context</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// context指的是那个想要借方法的对象，并为它指定默认值，没传就是window</span></span><br><span class="line">    <span class="keyword">var</span> context = context || <span class="built_in">window</span></span><br><span class="line">    <span class="comment">// 将要借用的那个方法绑定在当前要使用该方法的对象的fn属性上</span></span><br><span class="line">    context.fn = <span class="built_in">this</span></span><br><span class="line">    <span class="comment">// 这里的this指向你想要借用的那个方法也就是.myCall前面的调用者(这里的this指的是一个函数)</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>)</span><br><span class="line">    <span class="comment">//获取参数，也就是相当于call的参数列表</span></span><br><span class="line">    <span class="keyword">var</span> args = [...arguments].slice(<span class="number">1</span>)</span><br><span class="line">    <span class="comment">// 将参数传给该函数并执行</span></span><br><span class="line">    <span class="keyword">var</span> res = context.fn(...args)</span><br><span class="line">    <span class="comment">// 删除该方法</span></span><br><span class="line">    <span class="keyword">delete</span> context.fn</span><br><span class="line">    <span class="comment">// 返回执行结果</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="模拟apply"><a href="#模拟apply" class="headerlink" title="模拟apply"></a>模拟apply</h4><p><strong>思路：</strong></p>
+<ul>
+<li>与call类似，主要区别是参数的处理</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">实现原理与call类似，主要是参数不同，apply接受一个参数数组</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="built_in">Function</span>.prototype.myApply = <span class="function"><span class="keyword">function</span> (<span class="params">context</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> context = context || <span class="built_in">window</span></span><br><span class="line">    context.fn = <span class="built_in">this</span></span><br><span class="line">    <span class="comment">// 判断第二个参数是否为数组，不为数组需提示用户(报错提示)</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>.length)</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">arguments</span>.length &gt; <span class="number">2</span>)&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;只能传递两个参数&#x27;</span>)</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(!(<span class="built_in">arguments</span>[<span class="number">1</span>] <span class="keyword">instanceof</span> <span class="built_in">Array</span>))&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;第二个参数需要是数组类型&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> res = context.fn(...arguments[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">delete</span> context.fn</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="模拟bind"><a href="#模拟bind" class="headerlink" title="模拟bind"></a>模拟bind</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.myBind = <span class="function"><span class="keyword">function</span>(<span class="params">context</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> context = context || <span class="built_in">window</span></span><br><span class="line">    <span class="keyword">var</span> _this = <span class="built_in">this</span></span><br><span class="line">    <span class="keyword">var</span> args = [...arguments].slice(<span class="number">1</span>)</span><br><span class="line"><span class="comment">//    这里返回的是一个函数</span></span><br><span class="line">    <span class="keyword">var</span> res = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> _this.apply(context,...args)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wx_scan.png" alt="songyao wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫一扫，欢迎关注前端南玖～</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持技术分享，您的支持将鼓励我继续创作～</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/wx_pay.jpg" alt="songyao 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/ali_pay.jpg" alt="songyao 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/10/14/eventloop/" rel="next" title="JavaScript有同步任务和异步任务，浏览器是怎么处理的？">
+                <i class="fa fa-chevron-left"></i> JavaScript有同步任务和异步任务，浏览器是怎么处理的？
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/my.jpg"
+                alt="songyao" />
+            
+              <p class="site-author-name" itemprop="name">songyao</p>
+              <p class="site-description motion-element" itemprop="description">欢迎关注微信公众号：前端南玖</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/bettersong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:songyao666@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#this%E6%8C%87%E5%90%91%E4%B8%8Ecall-apply-bind"><span class="nav-number">1.</span> <span class="nav-text">this指向与call,apply,bind</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#this%E7%9A%84%E6%8C%87%E5%90%91"><span class="nav-number">1.1.</span> <span class="nav-text">this的指向</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ES5%E4%B8%AD%E7%9A%84this"><span class="nav-number">1.1.1.</span> <span class="nav-text">ES5中的this</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ES6%E4%B8%AD%E7%9A%84this"><span class="nav-number">1.1.2.</span> <span class="nav-text">ES6中的this</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#call-apply-bind%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.2.</span> <span class="nav-text">call, apply,bind的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#call"><span class="nav-number">1.2.1.</span> <span class="nav-text">call</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#apply"><span class="nav-number">1.2.2.</span> <span class="nav-text">apply</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#call%EF%BC%8Capply%E8%AF%A5%E7%94%A8%E5%93%AA%E4%B8%AA%EF%BC%9F"><span class="nav-number">1.3.</span> <span class="nav-text">call，apply该用哪个？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bind%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.4.</span> <span class="nav-text">bind的应用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E4%BF%9D%E5%AD%98%E5%8F%82%E6%95%B0"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.保存参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0this%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98"><span class="nav-number">1.4.2.</span> <span class="nav-text">2.回调函数this丢失问题</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9Fcall"><span class="nav-number">1.5.</span> <span class="nav-text">模拟call</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9Fapply"><span class="nav-number">1.6.</span> <span class="nav-text">模拟apply</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9Fbind"><span class="nav-number">1.7.</span> <span class="nav-text">模拟bind</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">songyao</span>
+
+  
+</div>
+
+
+
+
+  <a target="_blank" rel="noopener" href="https://www.cnblogs.com/songyao666/" class="post-meta-divider">博客园</a>
+  <a target="_blank" rel="noopener" href="https://juejin.cn/user/219558057873005" class="post-meta-divider">掘金</a>
+  <span class="post-meta-divider">微信公众号：前端南玖</span>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://bettersong.github.io/2021/10/16/this-call-apply-bind/';
+          this.page.identifier = '2021/10/16/this-call-apply-bind/';
+          this.page.title = 'this-call-apply-bind';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://bettersong.github.io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'wDxOQGAiCHeiIi0Dz7A7lfmS-gzGzoHsz',
+        appKey: 'NXodSccyH1EXXRVHD2bPQoVa',
+        placeholder: '留言区～',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("wDxOQGAiCHeiIi0Dz7A7lfmS-gzGzoHsz", "NXodSccyH1EXXRVHD2bPQoVa");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+
+</html>
