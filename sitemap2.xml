@@ -74,29 +74,29 @@
 
   <url>
     <loc>https://bettersong.github.io/</loc>
-    <lastmod>2021-10-20</lastmod>
+    <lastmod>2021-10-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
+    <loc>https://bettersong.github.io/tags/hexo/</loc>
+    <lastmod>2021-10-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://bettersong.github.io/tags/%E5%89%8D%E7%AB%AF/</loc>
-    <lastmod>2021-10-20</lastmod>
+    <lastmod>2021-10-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://bettersong.github.io/tags/git/</loc>
-    <lastmod>2021-10-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://bettersong.github.io/tags/hexo/</loc>
-    <lastmod>2021-10-20</lastmod>
+    <lastmod>2021-10-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -104,22 +104,22 @@
 
   
   <url>
+    <loc>https://bettersong.github.io/categories/hexo/</loc>
+    <lastmod>2021-10-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://bettersong.github.io/categories/javaScript/</loc>
-    <lastmod>2021-10-20</lastmod>
+    <lastmod>2021-10-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://bettersong.github.io/categories/git/</loc>
-    <lastmod>2021-10-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://bettersong.github.io/categories/hexo/</loc>
-    <lastmod>2021-10-20</lastmod>
+    <lastmod>2021-10-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
