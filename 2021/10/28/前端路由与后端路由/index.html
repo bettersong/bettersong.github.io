@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="XhjQWCtIiyDW5It6nYDFSdPNOaswmQKDj5vZOe3XAWg" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="code-rXQQcHP9V1" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="前端," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="我之前在上线自己的博客遇到过下面这些问题    为啥我的博客在开发阶段都没问题，部署到服务器之后访问不了除了&#x2F;的页面   路由用hash模式就没问题，改成history就会有问题      公众号：前端南玖   不定时有送书活动，记得关注~   什么是路由 在Web开发过程中，经常会遇到『路由』的概念。那么，到底什么是路由？简单来说，路由就是URL到函数的映射。  并且路由这个概念最早是出现在后端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试官：说一说前端路由与后端路由的区别">
+<meta property="og:url" content="https://bettersong.github.io/2021/10/28/%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%94%B1%E4%B8%8E%E5%90%8E%E7%AB%AF%E8%B7%AF%E7%94%B1/index.html">
+<meta property="og:site_name" content="南玖blog">
+<meta property="og:description" content="我之前在上线自己的博客遇到过下面这些问题    为啥我的博客在开发阶段都没问题，部署到服务器之后访问不了除了&#x2F;的页面   路由用hash模式就没问题，改成history就会有问题      公众号：前端南玖   不定时有送书活动，记得关注~   什么是路由 在Web开发过程中，经常会遇到『路由』的概念。那么，到底什么是路由？简单来说，路由就是URL到函数的映射。  并且路由这个概念最早是出现在后端">
+<meta property="og:locale">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b48bf107911c40ad8331e6ae5bf02149~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/64f09dd09bfa44aabbf9f7a8aaa779b8~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/04900c345f824502b261c14c0ef7b2e4~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/018aeeaa67ec4e64852790d35b637292~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/74496970e3ce4f8196404709ad885426~tplv-k3u1fbpfcp-watermark.image">
+<meta property="article:published_time" content="2021-10-28T03:10:25.000Z">
+<meta property="article:modified_time" content="2021-10-28T03:13:05.165Z">
+<meta property="article:author" content="songyao">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b48bf107911c40ad8331e6ae5bf02149~tplv-k3u1fbpfcp-watermark.image">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://bettersong.github.io/2021/10/28/前端路由与后端路由/"/>
+
+
+
+
+
+  <title>面试官：说一说前端路由与后端路由的区别 | 南玖blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">南玖blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">学习点滴📖</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://bettersong.github.io/2021/10/28/%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%94%B1%E4%B8%8E%E5%90%8E%E7%AB%AF%E8%B7%AF%E7%94%B1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="songyao">
+      <meta itemprop="description" content="欢迎关注微信公众号：前端南玖">
+      <meta itemprop="image" content="/uploads/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="南玖blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">面试官：说一说前端路由与后端路由的区别</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-10-28T11:10:25+08:00">
+                2021-10-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9D%A2%E8%AF%95/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/10/28/%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%94%B1%E4%B8%8E%E5%90%8E%E7%AB%AF%E8%B7%AF%E7%94%B1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/10/28/%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%94%B1%E4%B8%8E%E5%90%8E%E7%AB%AF%E8%B7%AF%E7%94%B1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>我之前在上线自己的博客遇到过下面这些问题</strong></p>
+<ul>
+<li>  为啥我的博客在开发阶段都没问题，部署到服务器之后访问不了除了<code>/</code>的页面</li>
+<li>  路由用hash模式就没问题，改成history就会有问题</li>
+</ul>
+<blockquote>
+<ul>
+<li>  公众号：<strong>前端南玖</strong></li>
+<li>  不定时有送书活动，记得关注~</li>
+</ul>
+</blockquote>
+<h2 id="什么是路由"><a href="#什么是路由" class="headerlink" title="什么是路由"></a>什么是路由</h2><blockquote>
+<p>在Web开发过程中，经常会遇到『路由』的概念。那么，到底什么是路由？简单来说，路由就是URL到函数的映射。</p>
+</blockquote>
+<p>并且路由这个概念最早是出现在后端的，因为早期的网页都是服务端渲染的，比如：JSP，PHP，ASP等语言，都是直接返回渲染好的html给客户端显示。</p>
+<h2 id="后端路由"><a href="#后端路由" class="headerlink" title="后端路由"></a>后端路由</h2><p>在web开发早期的年代里，前端的功能远不如现在这么强大，一直是后端路由占据主导地位。无论是jsp，还是php、asp，用户能通过URL访问到的页面，大多是通过后端路由匹配之后再返回给浏览器的。浏览器在地址栏中切换不同的URL时，每次都向后台服务器发出请求，服务器响应请求，在后台拼接html文件返回给前端，并且每次切换页面时，浏览器都会刷新页面。</p>
+<p><strong>在后端，路由映射表中就是不同的URL地址与不同的html + css + 后端数据 之间的映射</strong></p>
+<p>下面这张图或许能够让你更加清楚的了解后端路由：</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b48bf107911c40ad8331e6ae5bf02149~tplv-k3u1fbpfcp-watermark.image" alt="后端路由.png"></p>
+<h2 id="前端路由"><a href="#前端路由" class="headerlink" title="前端路由"></a>前端路由</h2><blockquote>
+<p>前端路由是后来发展到SPA（单页应用）时才出现的概念。</p>
+</blockquote>
+<p><strong>前端路由主要是有两种模式：</strong></p>
+<ul>
+<li>  <strong>hash:</strong> 带有hash的前端路由，优点是兼容性高。缺点是URL带有<code>#</code>号不好看</li>
+<li>  <strong>history:</strong> 不带hash的前端路由，优点是URL不带<code>#</code>号，好看。缺点是既需要浏览器支持也需要后端服务器支持</li>
+</ul>
+<p>前端路由应用最广泛的例子就是当今的SPA的web项目。不管是Vue、React还是Angular的页面工程，都离不开相应配套的router工具。</p>
+<p>整个页面就只有一整套的HTMLCSS+JS，这一套HTML+CSS+JS中包含了许多个网页，当我们请求不同的URL时，客户端会从这一整套HTML+CSS+JS中找到对应的HTML+CSS+JS，将它们解析执行，渲染在页面上。</p>
+<p>前端路由带来的最明显的好处就是，地址栏URL的跳转不会白屏了——这也得益于客户端渲染带来的好处。</p>
+<p>我们同样来看一张图：</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/64f09dd09bfa44aabbf9f7a8aaa779b8~tplv-k3u1fbpfcp-watermark.image" alt="前端路由.png"></p>
+<h3 id="Hash模式"><a href="#Hash模式" class="headerlink" title="Hash模式"></a>Hash模式</h3><blockquote>
+<p>早起的前端路由实现就是基于<code>location.hash</code>来实现的，<code>location.hash</code>就是路由<code>#</code>后面的内容，其原理就是通过<code>hashchange</code>监听<code>#</code>后面的内容的变化来进行页面更新。<code>hash</code>模式是利用浏览器不会对<code>#</code>后面的路径对服务端发起请求。</p>
+</blockquote>
+<p><strong>使用hash模式有两个特点：</strong></p>
+<ul>
+<li>  改变hash值，浏览器不会重新加载页面</li>
+<li>  当刷新页面时，hash不会传给服务器</li>
+</ul>
+<p>也就是说<code>http://localhost/#a</code>与<code>http://localhost/</code>这两个路由其实都是去请求<code>http://localhost</code>这个页面的内容，至于为什么它们可以渲染出不同的页面，这个是前端自己来判断的，不需要后端配置。</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li><p>  可以兼容低版本浏览器，支持IE8</p>
+</li>
+<li><p>  只有<code>#</code>之前的内容才会作为URL发送给服务器，就算服务端没有对路由进行全覆盖也不会返回404</p>
+</li>
+<li><p><code>hash</code>改变都会在浏览器访问的历史记录中增加一个记录，所以可以通过浏览器进行前进后退，如果想在hash模式下不保存记录，可以使用<code>location.replace</code></p>
+<h3 id="History模式"><a href="#History模式" class="headerlink" title="History模式"></a>History模式</h3><blockquote>
+<p><code>history</code>是基于HTML5新增的<code>pushState</code>和<code>replaceState</code>两个API以及浏览器的<code>popState</code>事件监听历史栈的改变，只要历史栈有信息发生改变，就会触发该事件。这种模式同样也是不会向后端发起请求的。</p>
+</blockquote>
+<p>  <strong>优点：</strong></p>
+<ul>
+<li>  该模式的路由不带<code>#</code>，看起来更美观</li>
+<li>  <code>pushState</code>设置的<code>URL</code>可以是任意的与当前URL同源的URL，而<code>hash</code>只能改变#后面的内容</li>
+</ul>
+<p>  <strong>缺点：</strong></p>
+<ul>
+<li>  IE9及其以下版本浏览器不支持，IE10开始支持</li>
+</ul>
+<p>  <strong>vue-router会检测浏览器版本，当无法启用<code>history</code>模式时会自动降级为<code>hash</code>模式</strong></p>
+<h3 id="文章开头说的问题是什么原因导致的？"><a href="#文章开头说的问题是什么原因导致的？" class="headerlink" title="文章开头说的问题是什么原因导致的？"></a>文章开头说的问题是什么原因导致的？</h3><p>  <strong>为啥我的博客在开发阶段都没问题，部署到服务器之后访问不了除了<code>/</code>的页面？？</strong></p>
+<p>  那是因为<code>vue-cli</code>在开发模式下帮你启动的那个<code>express</code>开发服务器帮你做了这方面的配置。理论上我们在开发模式下本来也是需要配置服务端的，只不过<code>vue-cli</code>都帮你配置好了，所以你就不用手动配置了。</p>
+<p>  <strong>那么该如何配置呢？</strong></p>
+<p>  其实在生产模式下配置也很简单，参考vue-router给出的<a target="_blank" rel="noopener" href="https://router.vuejs.org/zh-cn/essentials/history-mode.html">配置例子</a>。一个原则就是，<strong>在所有后端路由规则的最后，配置一个规则，如果前面其他路由规则都不匹配的情况下，就执行这个规则——把构建好的那个<code>index.html</code>返回给前端。</strong> 这样就解决了后端路由抛出的404的问题了，因为只要你输入了<code>http://localhost/user/1</code>这地址，那么由于后端其他路由都不匹配，那么就会返回给浏览器<code>index.html</code>。</p>
+<p>  浏览器拿到这个html之后，router库就开始工作，开始获取地址栏的URL信息，然后再告诉前端库（比如Vue）渲染对应的页面。到这一步就跟hash模式是类似的了。</p>
+<p>  当然，由于后端无法抛出404的页面错误，404的URL规则自然是交给前端路由来决定了。你可以自己在前端路由里决定什么URL都不匹配的404页面应该显示什么。</p>
+<h2 id="页面渲染流程"><a href="#页面渲染流程" class="headerlink" title="页面渲染流程"></a>页面渲染流程</h2><ul>
+<li>  浏览器通过DNS服务器得到域名的IP地址，向这个IP地址请求得到HTML文本</li>
+<li>  浏览器渲染进程解析HTML文本，构建DOM树</li>
+<li>  解析HTML的同时，如果遇到内联样式或者样式文件，则下载并构建样式规则，如果遇到JavaScript脚本，则会下载执行脚本</li>
+<li>  DOM树和CSSOM构建完成之后，渲染进程将两者合并成渲染树（render tree）</li>
+<li>  渲染进程开始对渲染树进行布局，生成布局树（layout tree）</li>
+<li>  渲染树对布局树进行绘制，生成绘制记录</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/04900c345f824502b261c14c0ef7b2e4~tplv-k3u1fbpfcp-watermark.image" alt="render.png"></p>
+<h2 id="服务端渲染（SSR）"><a href="#服务端渲染（SSR）" class="headerlink" title="服务端渲染（SSR）"></a>服务端渲染（SSR）</h2><p>顾名思义，服务端渲染就是在浏览器请求页面URL时，服务端直接将我们需要的HTML文本组装好，并返回给浏览器，这个HTML文本被浏览器解析之后，不需要经过JavaScript脚本的执行，可直接构建出完整的DOM树并展示页面中。<strong>这个服务端组装的过程，叫做服务端渲染。</strong></p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/018aeeaa67ec4e64852790d35b637292~tplv-k3u1fbpfcp-watermark.image" alt="服务端渲染.png"></p>
+<h2 id="客户端渲染（CSR）"><a href="#客户端渲染（CSR）" class="headerlink" title="客户端渲染（CSR）"></a>客户端渲染（CSR）</h2><p>页面的渲染其实就是浏览器将HTML文本转化为页面帧的过程。而如今我们大部分WEB应用都是使用 JavaScript 框架（Vue、React、Angular）进行页面渲染的，也就是说，在执行 JavaScript 脚本的时候，HTML页面已经开始解析并且构建DOM树了，JavaScript 脚本只是动态的改变 DOM 树的结构，使得页面成为希望成为的样子，这种渲染方式叫<code>动态渲染</code>，也可以叫<code>客户端渲染（client side rende）</code>。</p>
+<p>前端渲染把渲染的任务交给了浏览器，通过客户端的算力来解决页面的构建，这个很大程度上缓解了服务端的压力。而且配合前端路由，无缝的页面切换体验自然是对用户友好的。不过带来的坏处就是对SEO不友好。</p>
+<blockquote>
+<p>需要明确的是，只要在浏览器地址栏输入URL再回车，是一定会去后端服务器请求一次的。而如果是在页面里通过点击按钮等操作，利用router库的api来进行的URL更新是不会去后端服务器请求的。</p>
+</blockquote>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/74496970e3ce4f8196404709ad885426~tplv-k3u1fbpfcp-watermark.image" alt="客户端渲染.png"></p>
+<h2 id="前端路由与服务端渲染"><a href="#前端路由与服务端渲染" class="headerlink" title="前端路由与服务端渲染"></a>前端路由与服务端渲染</h2><p>虽然前端渲染有诸多好处，不过<code>SEO</code>的问题，还是比较突出的。所以<code>react</code>、<code>vue</code>等框架在后来也在服务端渲染上做着自己的努力。基于前端库的服务端渲染跟以前基于后端语言的服务端渲染又有所不同。前端框架的服务端渲染大多依然采用的是前端路由，并且由于引入了<code>状态统一</code>、<code>vnode</code>等等概念，它们的服务端渲染对服务器的性能要求比php等语言基于的字符串填充的模板引擎渲染对于服务器的性能要求高得多。所以在这方面不仅是框架本身在不断改进算法、优化，服务端的性能也必须要有所提升。</p>
+<p>当然在二者之间，也出现了预渲染的概念。也即先在服务端构建出一部分静态的<code>html</code>文件，用于直出浏览器。然后剩下的页面再通过常用的前端渲染来实现。通常我们可以把首页采用预渲染的方式。这个的好处是明显的，兼顾了<code>SEO</code>和服务器的性能要求。不过它无法做到全站<code>SEO</code>，生产构建阶段耗时也会有所提高，这也是遗憾所在。</p>
+<p>关于预渲染，可以考虑使用<a target="_blank" rel="noopener" href="https://github.com/chrisvfritz/prerender-spa-plugin">prerender-spa-plugin</a>这个webapck的插件，它的3.x版本开始使用puppeteer来构建html文件了。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wx_scan.png" alt="songyao wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫一扫，欢迎关注前端南玖～</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持技术分享，您的支持将鼓励我继续创作～</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/wx_pay.jpg" alt="songyao 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/ali_pay.jpg" alt="songyao 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/10/25/prototype/" rel="next" title="JavaScript之原型与原型链">
+                <i class="fa fa-chevron-left"></i> JavaScript之原型与原型链
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/my.jpg"
+                alt="songyao" />
+            
+              <p class="site-author-name" itemprop="name">songyao</p>
+              <p class="site-description motion-element" itemprop="description">欢迎关注微信公众号：前端南玖</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/bettersong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:songyao666@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%AF%E7%94%B1"><span class="nav-number">1.</span> <span class="nav-text">什么是路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E7%AB%AF%E8%B7%AF%E7%94%B1"><span class="nav-number">2.</span> <span class="nav-text">后端路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%94%B1"><span class="nav-number">3.</span> <span class="nav-text">前端路由</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.1.</span> <span class="nav-text">Hash模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#History%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.2.</span> <span class="nav-text">History模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E5%BC%80%E5%A4%B4%E8%AF%B4%E7%9A%84%E9%97%AE%E9%A2%98%E6%98%AF%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0%E5%AF%BC%E8%87%B4%E7%9A%84%EF%BC%9F"><span class="nav-number">3.3.</span> <span class="nav-text">文章开头说的问题是什么原因导致的？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93%E6%B5%81%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">页面渲染流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B8%B2%E6%9F%93%EF%BC%88SSR%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">服务端渲染（SSR）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%B8%B2%E6%9F%93%EF%BC%88CSR%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">客户端渲染（CSR）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%94%B1%E4%B8%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B8%B2%E6%9F%93"><span class="nav-number">7.</span> <span class="nav-text">前端路由与服务端渲染</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">songyao</span>
+
+  
+</div>
+
+
+
+
+  <a target="_blank" rel="noopener" href="https://www.cnblogs.com/songyao666/" class="post-meta-divider">博客园</a>
+  <a target="_blank" rel="noopener" href="https://juejin.cn/user/219558057873005" class="post-meta-divider">掘金</a>
+  <span class="post-meta-divider">微信公众号：前端南玖</span>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://bettersong.github.io/2021/10/28/%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%94%B1%E4%B8%8E%E5%90%8E%E7%AB%AF%E8%B7%AF%E7%94%B1/';
+          this.page.identifier = '2021/10/28/前端路由与后端路由/';
+          this.page.title = '面试官：说一说前端路由与后端路由的区别';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://bettersong.github.io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'wDxOQGAiCHeiIi0Dz7A7lfmS-gzGzoHsz',
+        appKey: 'NXodSccyH1EXXRVHD2bPQoVa',
+        placeholder: '留言区～',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+
+</html>
