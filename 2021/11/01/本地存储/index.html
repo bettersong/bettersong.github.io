@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="XhjQWCtIiyDW5It6nYDFSdPNOaswmQKDj5vZOe3XAWg" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="code-rXQQcHP9V1" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="前端," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="❝ 随着Web应用程序的出现，直接在客户端存储用户信息的需求也随之出现。那么我们前端常用的存储方式有哪些呢？ ❞  前言如果这篇文章有帮助到你，❤️关注+点赞❤️鼓励一下作者，文章公众号首发，关注 「前端南玖」 第一时间获取最新的文章～  HTML5常用的几种存储方式   本地存储：localStorage, sessionStorage, cookies   离线缓存：application">
+<meta property="og:type" content="article">
+<meta property="og:title" content="这一次带你彻底了解前端本地存储">
+<meta property="og:url" content="https://bettersong.github.io/2021/11/01/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8/index.html">
+<meta property="og:site_name" content="南玖blog">
+<meta property="og:description" content="❝ 随着Web应用程序的出现，直接在客户端存储用户信息的需求也随之出现。那么我们前端常用的存储方式有哪些呢？ ❞  前言如果这篇文章有帮助到你，❤️关注+点赞❤️鼓励一下作者，文章公众号首发，关注 「前端南玖」 第一时间获取最新的文章～  HTML5常用的几种存储方式   本地存储：localStorage, sessionStorage, cookies   离线缓存：application">
+<meta property="og:locale">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5cdaf49802334fd680760c1aeab0bdb7~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a792198107354f29b0c7737acc2ff96a~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/75e755a5fd184cf799c4272e313dc550~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ffd452954d004e659b1ad27c57d252cc~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f9761c22cdf94daab724f25e11648f96~tplv-k3u1fbpfcp-watermark.image">
+<meta property="article:published_time" content="2021-11-01T09:06:58.000Z">
+<meta property="article:modified_time" content="2021-11-01T09:15:23.330Z">
+<meta property="article:author" content="songyao">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5cdaf49802334fd680760c1aeab0bdb7~tplv-k3u1fbpfcp-watermark.image">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://bettersong.github.io/2021/11/01/本地存储/"/>
+
+
+
+
+
+  <title>这一次带你彻底了解前端本地存储 | 南玖blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">南玖blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">学习点滴📖</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://bettersong.github.io/2021/11/01/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="songyao">
+      <meta itemprop="description" content="欢迎关注微信公众号：前端南玖">
+      <meta itemprop="image" content="/uploads/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="南玖blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">这一次带你彻底了解前端本地存储</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-11-01T17:06:58+08:00">
+                2021-11-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9D%A2%E8%AF%95/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/11/01/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/11/01/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>❝</p>
+<p>随着Web应用程序的出现，直接在客户端存储用户信息的需求也随之出现。那么我们前端常用的存储方式有哪些呢？</p>
+<p>❞</p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如果这篇文章有帮助到你，❤️关注+点赞❤️鼓励一下作者，文章公众号首发，关注 <strong>「前端南玖」</strong> 第一时间获取最新的文章～</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5cdaf49802334fd680760c1aeab0bdb7~tplv-k3u1fbpfcp-watermark.image" alt="哪吒.gif"></p>
+<h3 id="HTML5常用的几种存储方式"><a href="#HTML5常用的几种存储方式" class="headerlink" title="HTML5常用的几种存储方式"></a>HTML5常用的几种存储方式</h3><ul>
+<li>  本地存储：<code>localStorage</code>, <code>sessionStorage</code>, <code>cookies</code></li>
+<li>  离线缓存：<code>application cache</code></li>
+<li>  前端数据库：<code>indexedDB</code>, <code>webSQL</code></li>
+</ul>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a792198107354f29b0c7737acc2ff96a~tplv-k3u1fbpfcp-watermark.image" alt="storage.png"></p>
+<h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><blockquote>
+<p>❝</p>
+<p><code>HTTP cookie</code> 通常也叫做<code>cookie</code>，最初用于在客户端存储会话信息。<strong>「<code>cookie</code>是与特定域名绑定的，设置<code>cookie</code>后，它会与请求一起发送到创建它的域。」</strong> 这个限制能保证cookie中存储的信息只对被认可的接收者开放，不被其它域访问。</p>
+<p>❞</p>
+</blockquote>
+<h4 id="cookie的构成"><a href="#cookie的构成" class="headerlink" title="cookie的构成"></a>cookie的构成</h4><ul>
+<li>  <strong>「名称：」</strong> 唯一标识cookie的名称。cookie不区分大小写，cookie名必须经过URL编码。</li>
+<li>  <strong>「值：」</strong> 存储在cookie里的字符串值，这个值必须经过URL编码。</li>
+<li>  <strong>「域：」</strong> cookie的有效域，发送到这个域的所有请求都会包含对应的cookie。</li>
+<li>  <strong>「路径：」</strong> 请求URL中包含这个路径才会把cookie发送到服务器。</li>
+<li>  <strong>「过期时间：」</strong> 表示何时删除cookie的时间戳。（即什么时间之后就不会发送到服务器了）</li>
+<li>  <strong>「安全标识：」</strong> 设置之后，只在使用SSL安全连接的情况下才会把cookie发送到服务器。</li>
+</ul>
+<h4 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h4><p><strong>「因为cookie存储在客户端机器上，所以为保证它不会被恶意利用，浏览器会施加限制。」</strong></p>
+<ul>
+<li>  不超过300个cookie</li>
+<li>  每个cookie不超过4096字节（4kb)</li>
+<li>  每个域不超过20个cookie</li>
+<li>  每个域不超过81920字节</li>
+</ul>
+<h4 id="JavaScript中的cookie"><a href="#JavaScript中的cookie" class="headerlink" title="JavaScript中的cookie"></a>JavaScript中的cookie</h4><p>在JavaScript中处理cookie比较麻烦，因为接口过于简单，只有<strong>「BOM」</strong> 的<code>document.cookie</code>属性。</p>
+<h4 id="获取cookie"><a href="#获取cookie" class="headerlink" title="获取cookie"></a>获取cookie</h4><p><code>document.cookie</code>返回包含页面中所有有效cookie的字符串，以分号分隔；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name1=value1;name2=valve2;name3=value3</span><br></pre></td></tr></table></figure>
+
+<p><strong>「所有名和值都是URL编码，因此必须使用<code>decodeURIComponent()</code>解码」</strong></p>
+<h4 id="设置cookie"><a href="#设置cookie" class="headerlink" title="设置cookie"></a>设置cookie</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name=value; expires=expiration_time; path=domain_path; domain=domain_namel secure</span><br><span class="line">//在所有这些参数中，只有cookie的名称和值是必须的</span><br><span class="line"></span><br><span class="line">document.cookie = `$&#123;encodeURIComponent(&#x27;name&#x27;)&#125;=$&#123;encodeURIComponent(&#x27;nanjiu&#x27;)&#125;;domain=bettersong.github.io;`</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除cookie"><a href="#删除cookie" class="headerlink" title="删除cookie"></a>删除cookie</h4><p><strong>「没有直接删除已有cookie的方法，但可以通过设置其过期时间来达到删除效果；」</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.cookie = &#x27;uid=dkfywqkrhkwehf23;expires=&#x27; + new Date(0) + &#x27;;path=/;secure;</span><br></pre></td></tr></table></figure>
+
+<h4 id="cookie是如何工作的？"><a href="#cookie是如何工作的？" class="headerlink" title="cookie是如何工作的？"></a>cookie是如何工作的？</h4><p><strong>「request：」</strong></p>
+<p>当浏览器发起一个请求时，浏览器会自动检查是否有相应的cookie，如果有则将cookie添加到<code>Request Headers</code>的<code>Cookie</code>字段中</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/75e755a5fd184cf799c4272e313dc550~tplv-k3u1fbpfcp-watermark.image" alt="request.png"></p>
+<p><strong>「response:」</strong></p>
+<p>当服务器需要cookie时，在http请求的Response Headers字段中添加Set-Cookie字段，浏览器接收到之后会自动解析识别，将cookie种下。</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ffd452954d004e659b1ad27c57d252cc~tplv-k3u1fbpfcp-watermark.image" alt="response.png"></p>
+<h3 id="localStorage-和sessionStorage"><a href="#localStorage-和sessionStorage" class="headerlink" title="localStorage 和sessionStorage"></a>localStorage 和sessionStorage</h3><blockquote>
+<p>❝</p>
+<p><code>localStorage</code>只要在<code>相同的协议，域名，端口</code>下就能读取或修改同一份<code>localStorage数据</code>，sessionStorage对象只存储会话数据，这意味着数据只会存储到浏览器关闭。<strong>「sessionStorage除了协议，域名，端口外，还要求在同一窗口下。」</strong></p>
+<p>❞</p>
+</blockquote>
+<ul>
+<li>  localStorage 永久存储，除非手动删除。</li>
+<li>  sessionStorage存储到浏览期关闭就消失了</li>
+<li>  每个域名给localStorage和sessionStorage分配的存储空间时<strong>5M</strong> ，cookie是<strong>4kb</strong></li>
+</ul>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">setItem(&#x27;key&#x27;,&#x27;value&#x27;)  // 存储数据</span><br><span class="line"></span><br><span class="line">getItem(&#x27;key&#x27;) // 读取数据</span><br><span class="line"></span><br><span class="line">remove(&#x27;key&#x27;) // 删除数据</span><br><span class="line"></span><br><span class="line">clear() // 清空</span><br></pre></td></tr></table></figure>
+
+<p><strong>「⚠️注意：Storage类型智能存储字符串。非字符串数据在存储之前会自动转换为字符串，并且这种转换不能在获取数据时撤销，也就是说你在获取storage数据时，拿到的一定是字符串，需要自己手动转」</strong></p>
+<h4 id="存储JSON对象的数据"><a href="#存储JSON对象的数据" class="headerlink" title="存储JSON对象的数据"></a>存储JSON对象的数据</h4><p><code>Storage</code>是以字符串保存数据的，所以在保存<code>JSON</code>格式的数据之前，最好把数据转化为字符串，这个操作叫<strong>「序列化」</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">  name: &#x27;南玖&#x27;,</span><br><span class="line">  age: 18</span><br><span class="line">&#125;</span><br><span class="line">localStorage.setItem(&#x27;author&#x27;,JSON.stringify(obj))</span><br><span class="line"></span><br><span class="line">const author = JSON.parse(localStorage.getItem(&#x27;author&#x27;))</span><br></pre></td></tr></table></figure>
+
+<h4 id="localStorage与sessionStorage的异同"><a href="#localStorage与sessionStorage的异同" class="headerlink" title="localStorage与sessionStorage的异同"></a>localStorage与sessionStorage的异同</h4><p><strong>「相同点：」</strong> 两者的<code>API</code>完全相同，都是在浏览器端存储数据，存储大小都是5M</p>
+<p><strong>「不同点：」</strong></p>
+<ol>
+<li> <code>localStorage</code>存储的数据是永久性数据,页面刷新，即使浏览器重启，甚至操作系统重启也不会丢失，并且存储的数据在同源（协议、域名、端口号一致）下的标签页和<code>window</code>窗口之间共享。</li>
+<li> <code>sessionStorage</code>存储的数据有些苛刻，页面刷新仍然有效,选项卡关闭时数据丢失。但是在相同标签页打开的多个<code>iframe</code>之间数据可以共享(同源的情况下)。</li>
+</ol>
+<h4 id="存储事件"><a href="#存储事件" class="headerlink" title="存储事件"></a>存储事件</h4><p>每当Storage对象发生变化时，都会触发<code>storage</code>事件。（增删改查）</p>
+<p>这个事件的时间对象有4个属性：</p>
+<ul>
+<li>  domain：存储变化对应的域</li>
+<li>  key：被设置或被删除的键</li>
+<li>  newValue：键被设置的新值，若被删除则为null</li>
+<li>  oldValue：键变化之前的值</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">window.addEventListener(&#x27;storage&#x27;, e=&gt;&#123;</span><br><span class="line">    console.log(e.domain)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>「对于<code>sessionStorage</code>和<code>localStorage</code>上的任何更改都会触发<code>storage</code>事件，但<code>storage</code>事件不会区分这两者」</strong></p>
+<h3 id="IndexedDB"><a href="#IndexedDB" class="headerlink" title="IndexedDB"></a>IndexedDB</h3><blockquote>
+<p>❝</p>
+<p>Indexed Database API简称 IndexedDB，是浏览器中存储结构话数据的一个方案。IndexedDB用于代替目前已废弃的 Web SQL</p>
+<p>❞</p>
+</blockquote>
+<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ul>
+<li>  Database：通过<code>open</code>方法直接打开</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const db = indexDB.open(&#x27;testDB&#x27;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  Object store：这个就是DB里面具体存储的对象。这个可对应SQL里面的table内容。其存储的结构为：</li>
+</ul>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f9761c22cdf94daab724f25e11648f96~tplv-k3u1fbpfcp-watermark.image" alt="db1.png"></p>
+<ul>
+<li>  Index：有点类似于外链，它本身是一种<code>Object store</code>，主要用来本体的<code>store</code>中，索引另外的<code>object store</code>里面的数据。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 创建 index</span><br><span class="line">var myIndex = objectStore.index(&#x27;lName&#x27;); </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  transaction: 事务其实就是一系列 CRUD 的集合内容。如果其中一个环节失败了，那么整个事务的处理都会被取消。</li>
+<li>  cursor: 主要是用来遍历 DB 里面的数据内容。主要是通过 <code>openCursor</code> 来进行控制。</li>
+</ul>
+<h4 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const request = indexedDB.open(dbName);</span><br><span class="line"></span><br><span class="line">request.onerror = function(event) &#123;</span><br><span class="line">  // 错误处理程序。</span><br><span class="line">&#125;;</span><br><span class="line">request.onupgradeneeded = function(event) &#123;</span><br><span class="line">  var db = event.target.result;</span><br><span class="line">  // 设置 id 为 primaryKey 参数</span><br><span class="line">  var objectStore = db.createObjectStore(&quot;customers&quot;, &#123; keyPath: &quot;id&quot;,&#123;autoIncrement:true&#125; &#125;);</span><br><span class="line">  </span><br><span class="line">  // 设置指定索引，并确保唯一性</span><br><span class="line">  objectStore.createIndex(&quot;name&quot;, &quot;name&quot;, &#123; unique: false &#125;);</span><br><span class="line">  objectStore.createIndex(&quot;email&quot;, &quot;email&quot;, &#123; unique: true &#125;);</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建-Object-Store"><a href="#创建-Object-Store" class="headerlink" title="创建 Object Store"></a>创建 Object Store</h4><p>使用的方法就是 IDBDatabase 上的 <code>createObjectStore</code> 方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const objectStore = db.createObjectStore(&quot;customers&quot;, &#123; keyPath: &quot;id&quot;,&#123;autoIncrement:true&#125; &#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  keyPath: 用来设置主键的 key，具体区别可以参考下面的 keyPath 和 generator 的区别。</li>
+<li>  autoIncrement: 是否使用自增 key 的特性。</li>
+</ul>
+<p><strong>「创建的 key 主要是为了保证，在数据插入时唯一性的标识。」</strong></p>
+<h4 id="设置索引-index"><a href="#设置索引-index" class="headerlink" title="设置索引 index"></a>设置索引 index</h4><p>在完成 PK(Primary key) 创建完毕后，为了更好的搜索性能我们还需要额外创建 <code>index</code>。这里可以直接使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">objectStore.createIndex(&#x27;indexName&#x27;, &#x27;property&#x27;, options);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  indexName: 设置当前 index 的名字</li>
+<li>  property: 从存储数据中，指明 index 所指的属性。</li>
+</ul>
+<p>其中，options 有三个选项：</p>
+<ul>
+<li>  unique: 当前 key 是否能重复 (最常用)</li>
+<li>  multiEntry: 设置当前的 property 为数组时，会给数组里面每个元素都设置一个 index 值。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 创建一个名字叫 titleIndex 的 index，并且存储的 index 不能重复</span><br><span class="line">DB.createIndex(&#x27;titleIndex&#x27;, &#x27;title&#x27;, &#123;unique: false&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="增删数据"><a href="#增删数据" class="headerlink" title="增删数据"></a>增删数据</h4><p>在 IndexedDB 里面进行数据的增删，都需要在 <code>transaction</code> 中完成。而这个增删数据，大家可以理解为一次 <code>request</code>，相当于在一个 <code>transaction</code> 里面管理所有当前逻辑操作的 <code>request</code>。所以，在正式开始进行数据操作之前，还需要给大家简单介绍一些如果创建一个事务。</p>
+<h4 id="事务的创建"><a href="#事务的创建" class="headerlink" title="事务的创建"></a>事务的创建</h4><p><code>transaction</code> API，在创建时，你需要手动指定当前 transaction 是那种类型的操作，基本的内容有：</p>
+<ul>
+<li>  “readonly”：只读</li>
+<li>  “readwrite”：读写</li>
+<li>  “versionchange”：这个不能手动指定，会在 <code>upgradeneeded</code> 回调事件里面自动创建。它可以用来修改现有 object store 的结构数据，比如 index 等。</li>
+</ul>
+<p>你可以通过在数据库打开之后，通过 <code>IDBDataBase</code> 上的 <code>transaction</code> 方法创建</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const transaction = db.transaction([&quot;customers&quot;], &quot;readwrite&quot;);</span><br><span class="line">const objectStore = transaction.objectStore(&quot;customers&quot;);</span><br><span class="line"> // 遍历存储数据</span><br><span class="line">for (let i in customerData) &#123;</span><br><span class="line">  const request = objectStore.add(customerData[i]);</span><br><span class="line">  request.onsuccess = function(event) &#123;</span><br><span class="line">    // success, done?</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="操作数据"><a href="#操作数据" class="headerlink" title="操作数据"></a>操作数据</h4><p>完成了事务的创建之后，我们就可以正式的开始进行数据的交互操作了，也就是写我们具体的业务逻辑。如下，一个完整数据事务的操作。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const tx = db.transaction(&quot;books&quot;, &quot;readwrite&quot;);</span><br><span class="line">const store = tx.objectStore(&quot;books&quot;);</span><br><span class="line"></span><br><span class="line">store.put(&#123;title: &quot;aaaaa&quot;, author: &quot;Fred&quot;, isbn: 1111&#125;);</span><br><span class="line">store.put(&#123;title: &quot;bbbbb&quot;, author: &quot;Fred&quot;, isbn: 2222&#125;);</span><br><span class="line">store.put(&#123;title: &quot;ccccc&quot;, author: &quot;Barney&quot;, isbn: 3333&#125;);</span><br><span class="line"></span><br><span class="line">tx.oncomplete = function() &#123;</span><br><span class="line">  // All requests have succeeded and the transaction has committed.</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="索引数据"><a href="#索引数据" class="headerlink" title="索引数据"></a>索引数据</h4><p>索引数据是所有数据库里面最重要的一个。这里，我们可以使用index 来做。例如，通过 index 来快速索引 key 值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const index = objectStore.index(&quot;username&quot;);</span><br><span class="line">index.openCursor.onsuccess = function(event) &#123;</span><br><span class="line">  // 处理成功</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="点赞、关注和评论"><a href="#点赞、关注和评论" class="headerlink" title="点赞、关注和评论"></a>点赞、关注和评论</h2><p>我是<code>前端南玖</code>，感谢各位的：<strong>「点赞、关注和评论」</strong>，我们下期见！</p>
+<p>加入前端交流群<code>928029210</code>，这里有许多志同道合的前端开发者，一起交流，共同进步～</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wx_scan.png" alt="songyao wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫一扫，欢迎关注前端南玖～</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持技术分享，您的支持将鼓励我继续创作～</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/wx_pay.jpg" alt="songyao 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/ali_pay.jpg" alt="songyao 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/10/28/%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%94%B1%E4%B8%8E%E5%90%8E%E7%AB%AF%E8%B7%AF%E7%94%B1/" rel="next" title="面试官：说一说前端路由与后端路由的区别">
+                <i class="fa fa-chevron-left"></i> 面试官：说一说前端路由与后端路由的区别
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/my.jpg"
+                alt="songyao" />
+            
+              <p class="site-author-name" itemprop="name">songyao</p>
+              <p class="site-description motion-element" itemprop="description">欢迎关注微信公众号：前端南玖</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/bettersong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:songyao666@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML5%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">HTML5常用的几种存储方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cookie"><span class="nav-number">1.2.</span> <span class="nav-text">cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cookie%E7%9A%84%E6%9E%84%E6%88%90"><span class="nav-number">1.2.1.</span> <span class="nav-text">cookie的构成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%99%90%E5%88%B6"><span class="nav-number">1.2.2.</span> <span class="nav-text">限制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JavaScript%E4%B8%AD%E7%9A%84cookie"><span class="nav-number">1.2.3.</span> <span class="nav-text">JavaScript中的cookie</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96cookie"><span class="nav-number">1.2.4.</span> <span class="nav-text">获取cookie</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEcookie"><span class="nav-number">1.2.5.</span> <span class="nav-text">设置cookie</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4cookie"><span class="nav-number">1.2.6.</span> <span class="nav-text">删除cookie</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cookie%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84%EF%BC%9F"><span class="nav-number">1.2.7.</span> <span class="nav-text">cookie是如何工作的？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#localStorage-%E5%92%8CsessionStorage"><span class="nav-number">1.3.</span> <span class="nav-text">localStorage 和sessionStorage</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95"><span class="nav-number">1.3.1.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%98%E5%82%A8JSON%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="nav-number">1.3.2.</span> <span class="nav-text">存储JSON对象的数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#localStorage%E4%B8%8EsessionStorage%E7%9A%84%E5%BC%82%E5%90%8C"><span class="nav-number">1.3.3.</span> <span class="nav-text">localStorage与sessionStorage的异同</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E4%BA%8B%E4%BB%B6"><span class="nav-number">1.3.4.</span> <span class="nav-text">存储事件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IndexedDB"><span class="nav-number">1.4.</span> <span class="nav-text">IndexedDB</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.4.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.4.2.</span> <span class="nav-text">创建数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-Object-Store"><span class="nav-number">1.4.3.</span> <span class="nav-text">创建 Object Store</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%B4%A2%E5%BC%95-index"><span class="nav-number">1.4.4.</span> <span class="nav-text">设置索引 index</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A2%9E%E5%88%A0%E6%95%B0%E6%8D%AE"><span class="nav-number">1.4.5.</span> <span class="nav-text">增删数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="nav-number">1.4.6.</span> <span class="nav-text">事务的创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE"><span class="nav-number">1.4.7.</span> <span class="nav-text">操作数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE"><span class="nav-number">1.4.8.</span> <span class="nav-text">索引数据</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%82%B9%E8%B5%9E%E3%80%81%E5%85%B3%E6%B3%A8%E5%92%8C%E8%AF%84%E8%AE%BA"><span class="nav-number">2.</span> <span class="nav-text">点赞、关注和评论</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">songyao</span>
+
+  
+</div>
+
+
+
+
+  <a target="_blank" rel="noopener" href="https://www.cnblogs.com/songyao666/" class="post-meta-divider">博客园</a>
+  <a target="_blank" rel="noopener" href="https://juejin.cn/user/219558057873005" class="post-meta-divider">掘金</a>
+  <span class="post-meta-divider">微信公众号：前端南玖</span>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://bettersong.github.io/2021/11/01/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8/';
+          this.page.identifier = '2021/11/01/本地存储/';
+          this.page.title = '这一次带你彻底了解前端本地存储';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://bettersong.github.io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'wDxOQGAiCHeiIi0Dz7A7lfmS-gzGzoHsz',
+        appKey: 'NXodSccyH1EXXRVHD2bPQoVa',
+        placeholder: '留言区～',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+
+</html>
