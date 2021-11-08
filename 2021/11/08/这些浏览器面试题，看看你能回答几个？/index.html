@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="XhjQWCtIiyDW5It6nYDFSdPNOaswmQKDj5vZOe3XAWg" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="code-rXQQcHP9V1" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="前端," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="这篇文章主要讲解浏览器相关的知识，文章内容比较长，知识点较多，非常建议收藏阅读～  前言如果这篇文章有帮助到你，❤️关注+点赞❤️鼓励一下作者，文章公众号首发，关注 前端南玖 第一时间获取最新的文章～  1.常见的浏览器内核有哪些？浏览器的内核可以分成两部分：渲染引擎和JS引擎（⚠️注意：我们常说的浏览器内核就是指渲染引擎） 由于JS引擎越来越独立，内核就指的只是渲染引擎了，渲染引擎主要用来请求">
+<meta property="og:type" content="article">
+<meta property="og:title" content="这些浏览器面试题，看看你能回答几个？">
+<meta property="og:url" content="https://bettersong.github.io/2021/11/08/%E8%BF%99%E4%BA%9B%E6%B5%8F%E8%A7%88%E5%99%A8%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%8C%E7%9C%8B%E7%9C%8B%E4%BD%A0%E8%83%BD%E5%9B%9E%E7%AD%94%E5%87%A0%E4%B8%AA%EF%BC%9F/index.html">
+<meta property="og:site_name" content="南玖blog">
+<meta property="og:description" content="这篇文章主要讲解浏览器相关的知识，文章内容比较长，知识点较多，非常建议收藏阅读～  前言如果这篇文章有帮助到你，❤️关注+点赞❤️鼓励一下作者，文章公众号首发，关注 前端南玖 第一时间获取最新的文章～  1.常见的浏览器内核有哪些？浏览器的内核可以分成两部分：渲染引擎和JS引擎（⚠️注意：我们常说的浏览器内核就是指渲染引擎） 由于JS引擎越来越独立，内核就指的只是渲染引擎了，渲染引擎主要用来请求">
+<meta property="og:locale">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b8f5b72a1e4043d5a88ed565ee6e9f3f~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7543d1e2e61048d18c783193081115d1~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c27cce10a55c487cae601e9f08d4ca36~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/034a8c8876ac468290d19746f28ecd9e~tplv-k3u1fbpfcp-watermark.image">
+<meta property="article:published_time" content="2021-11-08T07:49:09.000Z">
+<meta property="article:modified_time" content="2021-11-08T07:50:01.840Z">
+<meta property="article:author" content="songyao">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b8f5b72a1e4043d5a88ed565ee6e9f3f~tplv-k3u1fbpfcp-watermark.image">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://bettersong.github.io/2021/11/08/这些浏览器面试题，看看你能回答几个？/"/>
+
+
+
+
+
+  <title>这些浏览器面试题，看看你能回答几个？ | 南玖blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">南玖blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">学习点滴📖</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://bettersong.github.io/2021/11/08/%E8%BF%99%E4%BA%9B%E6%B5%8F%E8%A7%88%E5%99%A8%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%8C%E7%9C%8B%E7%9C%8B%E4%BD%A0%E8%83%BD%E5%9B%9E%E7%AD%94%E5%87%A0%E4%B8%AA%EF%BC%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="songyao">
+      <meta itemprop="description" content="欢迎关注微信公众号：前端南玖">
+      <meta itemprop="image" content="/uploads/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="南玖blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">这些浏览器面试题，看看你能回答几个？</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-11-08T15:49:09+08:00">
+                2021-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9D%A2%E8%AF%95/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/11/08/%E8%BF%99%E4%BA%9B%E6%B5%8F%E8%A7%88%E5%99%A8%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%8C%E7%9C%8B%E7%9C%8B%E4%BD%A0%E8%83%BD%E5%9B%9E%E7%AD%94%E5%87%A0%E4%B8%AA%EF%BC%9F/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/11/08/%E8%BF%99%E4%BA%9B%E6%B5%8F%E8%A7%88%E5%99%A8%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%8C%E7%9C%8B%E7%9C%8B%E4%BD%A0%E8%83%BD%E5%9B%9E%E7%AD%94%E5%87%A0%E4%B8%AA%EF%BC%9F/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>这篇文章主要讲解浏览器相关的知识，文章内容比较长，知识点较多，非常建议收藏阅读～</p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如果这篇文章有帮助到你，❤️关注+点赞❤️鼓励一下作者，文章公众号首发，关注 <strong>前端南玖</strong> 第一时间获取最新的文章～</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b8f5b72a1e4043d5a88ed565ee6e9f3f~tplv-k3u1fbpfcp-watermark.image" alt="哪吒2.gif"></p>
+<h2 id="1-常见的浏览器内核有哪些？"><a href="#1-常见的浏览器内核有哪些？" class="headerlink" title="1.常见的浏览器内核有哪些？"></a>1.常见的浏览器内核有哪些？</h2><h4 id="浏览器的内核可以分成两部分："><a href="#浏览器的内核可以分成两部分：" class="headerlink" title="浏览器的内核可以分成两部分："></a>浏览器的内核可以分成两部分：</h4><p><code>渲染引擎</code>和<code>JS引擎</code>（<strong>⚠️注意：我们常说的浏览器内核就是指渲染引擎</strong>）</p>
+<p>由于JS引擎越来越独立，内核就指的只是渲染引擎了，渲染引擎主要用来请求网络页面资源解析排版后呈现给用户</p>
+<table>
+<thead>
+<tr>
+<th>浏览器/RunTime</th>
+<th>内核（渲染引擎）</th>
+<th>JavaScript 引擎</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Chrome</td>
+<td>Blink（28~） Webkit（Chrome 27）</td>
+<td>V8</td>
+</tr>
+<tr>
+<td>FireFox</td>
+<td>Gecko</td>
+<td>SpiderMonkey</td>
+</tr>
+<tr>
+<td>Safari</td>
+<td>Webkit</td>
+<td>JavaScriptCore</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td>EdgeHTML</td>
+<td>Chakra（For JavaScript）</td>
+</tr>
+<tr>
+<td>IE</td>
+<td>Trident</td>
+<td>Chakra（For JScript）</td>
+</tr>
+<tr>
+<td>Opera</td>
+<td>Presto-&gt;blink</td>
+<td>Linear A（4.0-6.1）/ Linear B（7.0-9.2）/ Futhark（9.5-10.2）/ Carakan（10.5-）</td>
+</tr>
+<tr>
+<td>Node.js</td>
+<td>-</td>
+<td>V8</td>
+</tr>
+</tbody></table>
+<h2 id="2-浏览器的主要组成部分有哪些？"><a href="#2-浏览器的主要组成部分有哪些？" class="headerlink" title="2.浏览器的主要组成部分有哪些？"></a>2.浏览器的主要组成部分有哪些？</h2><ul>
+<li>  <strong>用户界面：包括地址栏，前进/后退/刷新/书签🔖等按钮</strong></li>
+<li>  <strong><strong>浏览器引擎：在用户界面和呈现引擎之间传送指令</strong></strong></li>
+<li>  <strong><strong><strong>渲染引擎：用来绘制请求的内容</strong></strong></strong></li>
+<li>  <strong><strong><strong><strong>网络：用来完成网络调用，例如http请求，它具有平台无关的接口，可以在不同平台上工作</strong></strong></strong></strong></li>
+<li>  <strong><strong><strong><strong>JavaScript解释器：用来解析执行JavaScript代码</strong></strong></strong></strong></li>
+<li>  <strong><strong><strong><strong>用户界面后端：用于绘制基本的窗口小部件，比如组合框和窗口，底层使用操作系统的用户接口</strong></strong></strong></strong></li>
+<li>  <strong><strong><strong><strong>数据存储：属于持久层，浏览器在硬盘中保存类似cookie的各种数据，HTML5定义了web database技术，这是一种轻量级完整的客户端存储技术</strong></strong></strong></strong></li>
+</ul>
+<p><strong><strong><strong><strong>⚠️注意：与大多数浏览器不同的是，谷歌（Chrome）浏览器的每个标签页都分别对应一个呈现引擎实例。每个标签页都是一个独立的进程</strong></strong></strong></strong></p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7543d1e2e61048d18c783193081115d1~tplv-k3u1fbpfcp-watermark.image" alt="2-浏览器组成.png"></p>
+<h2 id="3-说一说从输入URL到页面呈现发生了什么？"><a href="#3-说一说从输入URL到页面呈现发生了什么？" class="headerlink" title="3.说一说从输入URL到页面呈现发生了什么？"></a>3.说一说从输入URL到页面呈现发生了什么？</h2><blockquote>
+<p>这个题可以说是面试最常见也是一道可以无限难的题了，一般面试官出这道题就是为了考察你的前端知识深度。</p>
+</blockquote>
+<p>1.浏览器接受URL开启网络请求线程（涉及到：浏览器机制，线程与进程等）</p>
+<p>2.开启网络线程到发出一个完整的http请求（涉及到：DNS查询，TCP/IP请求，5层网络协议等）</p>
+<p>3.从服务器接收到请求到对应后台接受到请求（涉及到：负载均衡，安全拦截，后台内部处理等）</p>
+<p>4.后台与前台的http交互（涉及到：http头，响应码，报文结构，cookie等）</p>
+<p>5.缓存问题（涉及到：http强缓存与协商缓存，缓存头，etag,expired,cache-control等）</p>
+<p>6.浏览器接受到http数据包后的解析流程（涉及到html词法分析，解析成DOM树，解析CSS生成CSSOM树，合并生成render渲染树。然后layout布局，painting渲染，复合图层合成，GPU绘制，外链处理等）</p>
+<p>7.css可视化模型（涉及到：元素渲染规则，如：包含块，控制框，BFC，IFC等）</p>
+<p>8.JS引擎解析过程（涉及到：JS解析阶段，预处理阶段，执行阶段生成执行上下文，VO（全局对象），作用域链，回收机制等）</p>
+<p><strong>你会发现一个简单的输入URL到页面呈现，之间会发生这么多过程，是不是瞬间觉得崩溃了😭（别急，这一章我们不讲这么深，先教你如何回答这个问题，后面这一节单独出文章讲）</strong></p>
+<ul>
+<li>  浏览器通过DNS服务器得到域名的IP地址，向这个IP地址请求得到HTML文本</li>
+<li>  浏览器渲染进程解析HTML文本，构建DOM树</li>
+<li>  解析HTML的同时，如果遇到内联样式或者样式文件，则下载并构建样式规则，如果遇到JavaScript脚本，则会下载执行脚本</li>
+<li>  DOM树和CSSOM构建完成之后，渲染进程将两者合并成渲染树（render tree）</li>
+<li>  渲染进程开始对渲染树进行布局，生成布局树（layout tree）</li>
+<li>  渲染树对布局树进行绘制，生成绘制记录</li>
+</ul>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c27cce10a55c487cae601e9f08d4ca36~tplv-k3u1fbpfcp-watermark.image" alt="render.png"></p>
+<h2 id="4-浏览器是如何解析代码的？"><a href="#4-浏览器是如何解析代码的？" class="headerlink" title="4.浏览器是如何解析代码的？"></a>4.浏览器是如何解析代码的？</h2><h4 id="解析HTML"><a href="#解析HTML" class="headerlink" title="解析HTML"></a>解析HTML</h4><p>HTML是逐行解析的，浏览器的渲染引擎会将HTML文档解析并转换成DOM节点。</p>
+<ul>
+<li>  将HTML解析成许多Tokens</li>
+<li>  将Tokens解析成object</li>
+<li>  将object组合成一个DOM树</li>
+</ul>
+<h4 id="解析CSS"><a href="#解析CSS" class="headerlink" title="解析CSS"></a>解析CSS</h4><p><strong>浏览器会从右往左解析CSS选择器</strong></p>
+<p>我们知道DOM树与CSSOM树合并成render树，实际上是将CSSOM附着到DOM树上，因此需要根据选择器提供的信息对DOM树进行遍历。</p>
+<p>我们看一个例子🌰：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">.nav .title span &#123;color:blue&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">​</span><br><span class="line">&lt;div class=&#x27;nav&#x27;&gt;</span><br><span class="line">  &lt;div class=&#x27;title&#x27;&gt;</span><br><span class="line">    &lt;span&gt;南玖&lt;/span&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;sub_title&quot;&gt;前端&lt;/header&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>从右至左的匹配：</p>
+<ol>
+<li> 先找到所有的最右节点 span，对于每一个 span，向上寻找节点 div.title</li>
+<li> 由 h3再向上寻找 div.nav 的节点</li>
+<li> 最后找到根元素 html 则结束这个分支的遍历。</li>
+</ol>
+<h4 id="解析JS"><a href="#解析JS" class="headerlink" title="解析JS"></a>解析JS</h4><p>在浏览器中有一个js解析器的工具，专门用来解析我们的js代码。</p>
+<p>当浏览器遇到js代码时，立马召唤“js解析器”出来工作。</p>
+<p>解析器会找到js当中的所有变量、函数、参数等等，并且把变量赋值为未定义(undefined)。</p>
+<p>把函数取出来成为一个函数块，然后存放到仓库当中。这件事情做完了之后才开始逐行解析代码（由上向下，由左向右），然后再去和仓库进行匹配。</p>
+<h2 id="5-DOMContentLoaded与load的区别？"><a href="#5-DOMContentLoaded与load的区别？" class="headerlink" title="5.DOMContentLoaded与load的区别？"></a>5.DOMContentLoaded与load的区别？</h2><ul>
+<li>  DOMContentLoaded：仅当DOM解析完成后触发，不包括样式表，图片等资源。</li>
+<li>  Load：当页面上所有的DOM，样式表，脚本，图片等资源加载完毕事触发。</li>
+</ul>
+<h2 id="6-浏览器重绘域重排的区别？"><a href="#6-浏览器重绘域重排的区别？" class="headerlink" title="6.浏览器重绘域重排的区别？"></a>6.浏览器重绘域重排的区别？</h2><ul>
+<li>  <strong>重排：</strong> 部分渲染树或整个渲染树需要重新分析且节点尺寸需要重新计算，表现为重新生成布局，重新排列元素</li>
+<li>  <strong>重绘：</strong> 由于节点的几何属性发生改变或样式改变，例如元素背景元素，表现为某些元素的外观被改变</li>
+</ul>
+<p><strong>重绘不一定导致重排，但重排一定绘导致重绘</strong></p>
+<h4 id="如何触发重绘和重排？"><a href="#如何触发重绘和重排？" class="headerlink" title="如何触发重绘和重排？"></a>如何触发重绘和重排？</h4><p>任何改变用来构建渲染树的信息都会导致一次重排或重绘：</p>
+<ul>
+<li>  添加、删除、更新DOM节点</li>
+<li>  通过display: none隐藏一个DOM节点-触发重排和重绘</li>
+<li>  通过visibility: hidden隐藏一个DOM节点-只触发重绘，因为没有几何变化</li>
+<li>  移动或者给页面中的DOM节点添加动画</li>
+<li>  添加一个样式表，调整样式属性</li>
+<li>  用户行为，例如调整窗口大小，改变字号，或者滚动。</li>
+</ul>
+<h4 id="如何避免重绘或重排？"><a href="#如何避免重绘或重排？" class="headerlink" title="如何避免重绘或重排？"></a>如何避免重绘或重排？</h4><ul>
+<li><p>  集中改变样式：比如使用class的方式来集中改变样式</p>
+</li>
+<li><p>  使用<code>document.createDocumentFragment()</code>：我们可以通过createDocumentFragment创建一个游离于DOM树之外的节点，然后在此节点上批量操作，最后插入DOM树中，因此只触发一次重排</p>
+</li>
+<li><p>提升为合成层</p>
+<p>  将元素提升为合成层有以下优点：</p>
+<ul>
+<li><p>  合成层的位图，会交由 <code>GPU</code> 合成，比 <code>CPU</code> 处理要快</p>
+</li>
+<li><p>  当需要<code>repaint</code> 时，只需要 <code>repaint</code> 本身，不会影响到其他的层</p>
+</li>
+<li><p>对于 <code>transform</code> 和 <code>opacity</code> 效果，不会触发 <code>layout</code> 和 <code>paint</code></p>
+<p>  提升合成层的最好方式是使用 CSS 的 <code>will-change</code> 属性</p>
+<h2 id="7-为什么JS是单线程的？"><a href="#7-为什么JS是单线程的？" class="headerlink" title="7.为什么JS是单线程的？"></a>7.为什么JS是单线程的？</h2></li>
+</ul>
+</li>
+</ul>
+<p>这主要与JS的用途有关，JS作为浏览器的脚本语言，最初主要是实现用户与浏览器的交互，以及操作DOM。这就决定了它只能是单线程，否则会带来许多复杂的同步问题。</p>
+<p><strong>举个例子🌰：</strong> 如果JS是多线程的，其中一个线程要修改一个DOM元素，另外一个线程想要删除这个DOM元素，这时候浏览器就不知道该听谁的。所以为了避免复杂性，从一诞生，JavaScript就被设计成单线程。</p>
+<p><strong>为了利用多核CPU的计算能力，HTML5提出Web Worker标准，允许JavaScript脚本创建多个线程，但是子线程完全受主线程控制，且不得操作DOM。所以，这个新标准并没有改变JavaScript单线程的本质</strong></p>
+<h2 id="8-CSS加载会阻塞DOM吗？"><a href="#8-CSS加载会阻塞DOM吗？" class="headerlink" title="8.CSS加载会阻塞DOM吗？"></a>8.CSS加载会阻塞DOM吗？</h2><h4 id="先上结论"><a href="#先上结论" class="headerlink" title="先上结论"></a>先上结论</h4><blockquote>
+<ul>
+<li>  <code>CSS</code>不会阻塞<code>DOM</code>的解析，但会阻塞<code>DOM</code>的渲染</li>
+<li>  <code>CSS</code>会阻塞<code>JS</code>执行，但不会阻塞<code>JS</code>文件的下载</li>
+</ul>
+</blockquote>
+<h4 id="CSSOM的作用"><a href="#CSSOM的作用" class="headerlink" title="CSSOM的作用"></a>CSSOM的作用</h4><ul>
+<li><p>  第一个是提供给JavaScript操作样式表的能力</p>
+</li>
+<li><p>  第二个是为布局树的合成提供基础的样式信息</p>
+</li>
+<li><p>  这个CSSOM体现在DOM中就是<code>document.styleSheets</code></p>
+</li>
+</ul>
+<p>由之前讲到的浏览器渲染流程我们可以看出：</p>
+<ul>
+<li><p>  DOM和CSSOM通常是并行构建的，所以<strong>CSS加载不会阻塞DOM的解析</strong></p>
+</li>
+<li><p>  render树是依赖DOM树和CSSOM树的，所以它必须等到两者都加载完毕才能开始构建渲染，所以<strong>CSS加载会阻塞DOM的渲染</strong></p>
+</li>
+<li><p>  由于JavaScript是可以操作DOM与CSS的，如果在修改这些元素属性同时渲染界面（即JavaScript线程与UI线程同时进行），那么渲染线程前后获得的元素可能就不一致了。所以为了防止渲染出现不可预期的结果，浏览器设置<strong>GUI渲染线程与JavaScript线程为互斥</strong>的关系</p>
+</li>
+</ul>
+<h4 id="JS需要等待CSS的下载，这是为什么呢？（CSS阻塞DOM执行）"><a href="#JS需要等待CSS的下载，这是为什么呢？（CSS阻塞DOM执行）" class="headerlink" title="JS需要等待CSS的下载，这是为什么呢？（CSS阻塞DOM执行）"></a>JS需要等待CSS的下载，这是为什么呢？（CSS阻塞DOM执行）</h4><p>如果<code>JS</code>脚本的内容是获取元素的样式，那它就必然依赖<code>CSS</code>。因为浏览器无法感知<code>JS</code>内部到底想干什么，为避免样式获取，就只好等前面所有的样式下载完毕再执行<code>JS</code>。但JS文件与CSS文件下载是并行的，CSS文件会在后面的JS文件执行前先加载执行完毕，所以<strong>CSS会阻塞后面JS的执行</strong></p>
+<h4 id="避免白屏，提高CSS的加载速度"><a href="#避免白屏，提高CSS的加载速度" class="headerlink" title="避免白屏，提高CSS的加载速度"></a>避免白屏，提高CSS的加载速度</h4><ul>
+<li>  使用CDN（CDN会根据你的网络状况，挑选最近的一个具有缓存内容的节点为你提供资源，因此可以减少加载时间）</li>
+<li>  对CSS进行压缩</li>
+<li>  合理使用缓存</li>
+<li>  减少http请求数，合并CSS文件</li>
+</ul>
+<h2 id="9-JS会阻塞页面吗？"><a href="#9-JS会阻塞页面吗？" class="headerlink" title="9.JS会阻塞页面吗？"></a>9.JS会阻塞页面吗？</h2><h4 id="先上结论-1"><a href="#先上结论-1" class="headerlink" title="先上结论"></a>先上结论</h4><blockquote>
+<p><strong>JS会阻塞DOM的解析</strong>，因此也就会阻塞页面的加载</p>
+</blockquote>
+<p><strong>这也是为什么我们常说要把JS文件放在最下面的原因</strong></p>
+<p>由于 JavaScript 是可操纵 DOM 的,如果在修改这些元素属性同时渲染界面（即 JavaScript 线程和 UI 线程同时运行）,那么渲染线程前后获得的元素数据就可能不一致了。</p>
+<p>因此为了防止渲染出现不可预期的结果,浏览器设置 <strong>「GUI 渲染线程与 JavaScript 引擎为互斥」</strong>的关系。</p>
+<p>当 JavaScript 引擎执行时 GUI 线程会被挂起,GUI 更新会被保存在一个队列中等到引擎线程空闲时立即被执行。</p>
+<p>当浏览器在执行 JavaScript 程序的时候,GUI 渲染线程会被保存在一个队列中,直到 JS 程序执行完成,才会接着执行。</p>
+<p>因此如果 JS 执行的时间过长,这样就会造成页面的渲染不连贯,导致页面渲染加载阻塞的感觉。</p>
+<h2 id="10-defer和async的区别？"><a href="#10-defer和async的区别？" class="headerlink" title="10.defer和async的区别？"></a>10.defer和async的区别？</h2><ul>
+<li>  两者都是异步去加载外部JS文件，不会阻塞DOM解析</li>
+<li>  Async是在外部JS加载完成后，浏览器空闲时，Load事件触发前执行，标记为async的脚本并不保证按照指定他们的先后顺序执行，该属性对于内联脚本无作用 (即没有<strong>「src」</strong>属性的脚本）。</li>
+<li>  defer是在JS加载完成后，整个文档解析完成后，触发 <code>DOMContentLoaded</code> 事件前执行，如果缺少 <code>src</code> 属性（即内嵌脚本），该属性不应被使用，因为这种情况下它不起作用</li>
+</ul>
+<h2 id="11-浏览器的垃圾回收机制"><a href="#11-浏览器的垃圾回收机制" class="headerlink" title="11.浏览器的垃圾回收机制"></a>11.浏览器的垃圾回收机制</h2><blockquote>
+<p>垃圾回收是一种自动的内存管理机制。当计算机上的动态内存不再需要时，就应该予以释放。</p>
+<p>需要注意的是，自动的意思是浏览器可以自动帮助我们回收内存垃圾，但并不代表我们不用关心内存管理，如果操作不当，JavaScript中仍然会出现内存溢出的情况，造成系统崩溃。</p>
+</blockquote>
+<p>由于字符串，数组，对象等都没有固定大小，因此需要当它们大小已知时，才能对他们进行动态的存储分配。JavaScript程序每次创建字符串，数组或对象时，解释器都必须分配内存来存储那个实体。</p>
+<p>JavaScript解释器可以检测到何时程序不在使用一个对象了，当它确定这个对象是无用的时候，他就知道不再需要这个对象了，就可以把它占用的内存释放掉了。</p>
+<p>浏览器通常采用的垃圾回收有两种方法：<strong>标记清除</strong>，<strong>引用计数</strong>。</p>
+<h4 id="标记清除"><a href="#标记清除" class="headerlink" title="标记清除"></a>标记清除</h4><p><strong>这是JavaScript中最常用的垃圾回收方式</strong></p>
+<p>从2012年起，所有现代浏览器都使用了标记清除的垃圾回收方法，除了低版本IE还是采用的引用计数法。</p>
+<p><strong>那么什么叫标记清除呢？</strong></p>
+<blockquote>
+<p>JavaScript中有一个全局对象，定期的，垃圾回收器将从这个全局对象开始，找出所有从这个全局对象开始引用的对象，再找这些对象引用的对象…对这些活跃的对象标记，这是标记阶段。清楚阶段就是清楚那些没有被标记的对象。</p>
+</blockquote>
+<p>标记清除有一个问题，就是在清除之后，内存空间是不连续的，即出现了内存碎片。如果后面需要一个比较大的连续的内存空间，那将不能满足要求。而<strong>标记整理</strong> 方法可以有效德地解决这个问题。</p>
+<p>在标记的过程中，引入了概念：三色标记法，三色为：</p>
+<ul>
+<li>  白：未被标记的对象，即不可达对象（没有扫描到的对象），可回收</li>
+<li>  灰：已被标记的对象（可达对象），但是对象还没有被扫描完，不可回收</li>
+<li>  黑：已被扫描完（可达对象），不可回收</li>
+</ul>
+<p><strong>标记整理：</strong></p>
+<blockquote>
+<p>标记阶段与标记清除法没什么区别，只是标记结束后，标记整理法会将存活的对象向内存的一边移动，最后清理掉边界内存。</p>
+</blockquote>
+<h4 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h4><blockquote>
+<p>引用计数的含义是跟踪记录每个值被引用的次数。当一个变量A被赋值时，这个值的引用次数就是1，当变量A重新赋值后，则之前那个值的引用次数就减1。当引用次数变成0时，则说明没有办法再访问这个值了，所以就可以清除这个值占用的内存了。</p>
+</blockquote>
+<p><strong>大多数浏览器已经放弃了这种回收方式</strong></p>
+<h4 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h4><blockquote>
+<p>为避免内存泄漏，一旦数据不再使用，最好通过将其值设为<code>null</code>来释放其引用，这个方法叫做<strong>接触引用</strong></p>
+</blockquote>
+<h5 id="哪些情况会造成内存泄漏？如何避免？"><a href="#哪些情况会造成内存泄漏？如何避免？" class="headerlink" title="哪些情况会造成内存泄漏？如何避免？"></a>哪些情况会造成内存泄漏？如何避免？</h5><p> 以 Vue 为例，通常有这些情况：</p>
+<ul>
+<li>  监听在 <code>window/body</code> 等事件没有解绑</li>
+<li>  绑在 <code>EventBus</code> 的事件没有解绑</li>
+<li>  <code>Vuex</code> 的 <code>$store</code>，<code>watch</code> 了之后没有 <code>unwatch</code></li>
+<li>  使用第三方库创建，没有调用正确的销毁函数</li>
+</ul>
+<p> 解决办法：<code>beforeDestroy</code> 中及时销毁</p>
+<ul>
+<li>  绑定了 <code>DOM/BOM</code> 对象中的事件 <code>addEventListener</code> ，<code>removeEventListener</code>。</li>
+<li>  观察者模式 <code>$on</code>，<code>$off</code>处理。</li>
+<li>  如果组件中使用了定时器，应销毁处理。</li>
+<li>  如果在 <code>mounted/created</code> 钩子中使用了第三方库初始化，对应的销毁。</li>
+<li>  使用弱引用 <code>weakMap</code>、<code>weakSet</code>。</li>
+</ul>
+<h5 id="浏览器中不同类型变量的内存都是何时释放的？"><a href="#浏览器中不同类型变量的内存都是何时释放的？" class="headerlink" title="浏览器中不同类型变量的内存都是何时释放的？"></a>浏览器中不同类型变量的内存都是何时释放的？</h5><ul>
+<li><p>引用类型</p>
+<ul>
+<li> 在没有引用之后，通过 V8 自动回收。</li>
+</ul>
+</li>
+<li><p>基本类型</p>
+<ul>
+<li>  如果处于闭包的情况下，要等闭包没有引用才会被 V8 回收。</li>
+<li>  非闭包的情况下，等待 V8 的新生代切换的时候回收。<h2 id="12-说一说浏览器的缓存机制？"><a href="#12-说一说浏览器的缓存机制？" class="headerlink" title="12.说一说浏览器的缓存机制？"></a>12.说一说浏览器的缓存机制？</h2></li>
+</ul>
+</li>
+</ul>
+<h4 id="认识浏览器缓存"><a href="#认识浏览器缓存" class="headerlink" title="认识浏览器缓存"></a>认识浏览器缓存</h4><p>当浏览器请求一个网站时，会加载各种资源，对于一些不经常变动的资源，浏览器会将他们保存在本地内存中，下次访问时直接加载这些资源，提高访问速度。</p>
+<h4 id="如何知道资源是请求的服务器还是读取的缓存呢？"><a href="#如何知道资源是请求的服务器还是读取的缓存呢？" class="headerlink" title="如何知道资源是请求的服务器还是读取的缓存呢？"></a>如何知道资源是请求的服务器还是读取的缓存呢？</h4><p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/034a8c8876ac468290d19746f28ecd9e~tplv-k3u1fbpfcp-watermark.image" alt="10.缓存.png"></p>
+<p>看上面这张图，有些资源的size值是大小，有些是<code>from disk cache</code>，有些是<code>from memory cache</code>，显示大小的是请求的服务器资源，而显示后面两种的则是读取的缓存。</p>
+<ul>
+<li>  <strong>disk cache：</strong> 就是将资源存储在磁盘中，等待下次访问时不需重新下载，直接从磁盘中读取，它的直接操作对象为<code>CurlCacheManager</code>。（效率比内存缓存慢，但存储容量大，存储时间长）</li>
+<li>  <strong>memory cache：</strong> 就是将资源缓存到内存中，等待下次访问时不需重新下载，直接从内存中读取。（从效率上看它是最快的，从存活时间来看，它是最短的。）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>memory cache</th>
+<th>disk cache</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>相同点</td>
+<td>只能存储一些派生类资源文件</td>
+<td>只能存储一些派生类资源文件</td>
+</tr>
+<tr>
+<td>不同点</td>
+<td>退出进程时数据会被清除</td>
+<td>退出进程时数据不会被清除</td>
+</tr>
+<tr>
+<td>存储资源</td>
+<td>一般脚本、字体、图片会存在内存当中</td>
+<td>一般非脚本会存在内存当中，如css等</td>
+</tr>
+</tbody></table>
+<h4 id="浏览器缓存分类"><a href="#浏览器缓存分类" class="headerlink" title="浏览器缓存分类"></a>浏览器缓存分类</h4><ul>
+<li>  强缓存</li>
+<li>  协商缓存</li>
+</ul>
+<p><strong>浏览器在向服务器请求资源时，首先判断是否命中强缓存，没命中再判断是否命中协商缓存</strong></p>
+<h4 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h4><p>浏览器在加载资源时，会先根据本地缓存资源的<code>header</code>中判断是否命中强缓存，如果命中则直接使用缓存中的资源，不会再向服务器发送请求。 <strong>（这里的header中的信息指的是 <code>expires</code> 和 <code>cache-control</code>）</strong></p>
+<h5 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h5><p>该字段是 <strong>http1.0</strong> 时的规范，它的值为一个<strong>绝对时间</strong>的 GMT 格式的时间字符串，比如 Expires:Mon,18 Oct 2066 23:59:59 GMT。这个时间代表着这个资源的失效时间，在此时间之前，即命中缓存。这种方式有一个明显的缺点，由于失效时间是一个绝对时间，所以当服务器与客户端时间偏差较大时，就会导致缓存混乱。所以这种方式很快在后来的HTTP1.1版本中被抛弃了。</p>
+<h5 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h5><p>Cache-Control 是 <strong>http1.1</strong> 时出现的 header 信息，主要是利用该字段的 <strong>max-age</strong> 值来进行判断，它是一个<strong>相对时间</strong>，例如 <code>Cache-Control:max-age=3600</code>，代表着资源的有效期是 3600 秒。cache-control 除了该字段外，还有下面几个比较常用的设置值：</p>
+<p><strong>no-cache</strong>：需要进行协商缓存，发送请求到服务器确认是否使用缓存。</p>
+<p><strong>no-store</strong>：禁止使用缓存，每一次都要重新请求数据。</p>
+<p><strong>public</strong>：可以被所有的用户缓存，包括终端用户和 CDN 等中间代理服务器。</p>
+<p><strong>private</strong>：只能被终端用户的浏览器缓存，不允许 CDN 等中继缓存服务器对其缓存。</p>
+<p><strong>Cache-Control 与 Expires 可以在服务端配置同时启用，同时启用的时候 Cache-Control 优先级高。</strong></p>
+<h4 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h4><p>当强缓存没命中时，浏览器会发送一个请求到服务器，服务器根据 <code>header</code> 中的信息来判断是否命中协商缓存。如果命中，则返回<strong>304</strong> ，告诉浏览器资源未更新，可以使用本地缓存。 <strong>（这里的header信息指的是<code>Last-Modify/If-Modify-Since</code> 和 <code>ETag/If-None-Match</code>）</strong></p>
+<h5 id="Last-Modify-If-Modify-Since"><a href="#Last-Modify-If-Modify-Since" class="headerlink" title="Last-Modify/If-Modify-Since"></a>Last-Modify/If-Modify-Since</h5><p>浏览器第一次请求一个资源的时候，服务器返回的 header 中会加上 Last-Modify，Last-modify 是一个时间标识该资源的最后修改时间。</p>
+<p>当浏览器再次请求该资源时，request 的请求头中会包含 If-Modify-Since，该值为缓存之前返回的 Last-Modify。服务器收到 If-Modify-Since 后，根据资源的最后修改时间判断是否命中缓存。</p>
+<p>如果命中缓存，则返回 304，并且不会返回资源内容，并且不会返回 Last-Modify。</p>
+<p>缺点:</p>
+<p>短时间内资源发生了改变，Last-Modified 并不会发生变化。</p>
+<p>周期性变化。如果这个资源在一个周期内修改回原来的样子了，我们认为是可以使用缓存的，但是 Last-Modified 可不这样认为,因此便有了 ETag。</p>
+<h5 id="ETag-If-None-Match"><a href="#ETag-If-None-Match" class="headerlink" title="ETag/If-None-Match"></a>ETag/If-None-Match</h5><p>与 Last-Modify/If-Modify-Since 不同的是，Etag/If-None-Match 返回的是一个校验码。ETag 可以保证每一个资源是唯一的，资源变化都会导致 ETag 变化。服务器根据浏览器上送的 If-None-Match 值来判断是否命中缓存。</p>
+<p>与 Last-Modified 不一样的是，当服务器返回 304 Not Modified 的响应时，由于 ETag 重新生成过，response header 中还会把这个 ETag 返回，即使这个 ETag 跟之前的没有变化。</p>
+<p><strong>Last-Modified 与 ETag 是可以一起使用的，服务器会优先验证 ETag，一致的情况下，才会继续比对 Last-Modified，最后才决定是否返回 304。</strong></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><strong>当浏览器访问一个已经访问过的资源是，它的步骤是：</strong></p>
+<p>1.先看是否命中强缓存，命中🎯的话直接使用缓存</p>
+<p>2.没命中强缓存，则会发送请求到服务器看是否命中🎯协商缓存</p>
+<p>3.如果命中了协商缓存，服务器会返回304告诉浏览器可以使用本地缓存</p>
+<p>4.没命中协商缓存，则服务器会返回新的资源给浏览器</p>
+<h2 id="13-什么是浏览器的同源策略，以及跨域？"><a href="#13-什么是浏览器的同源策略，以及跨域？" class="headerlink" title="13.什么是浏览器的同源策略，以及跨域？"></a>13.什么是浏览器的同源策略，以及跨域？</h2><h4 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h4><blockquote>
+<p>同源策略是浏览器的一种自我保护行为。所谓的同源指的是：协议，域名，端口均要相同</p>
+</blockquote>
+<p>浏览器中大部分内容都是受同源策略限制的，但是以下三个标签不受限制：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;...&quot; /&gt;</span><br><span class="line">&lt;link href=&quot;...&quot; /&gt;</span><br><span class="line">&lt;script src=&quot;...&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h4><blockquote>
+<p>跨域指的是浏览器不能执行其它域名下的脚本。它是由浏览器的同源策略限制的。</p>
+</blockquote>
+<p><strong>你可能会想跨域请求到底有没有发送到服务器？</strong></p>
+<p>事实上，跨域请求时能够发送到服务器的，并且服务器也能过接受的请求并正常返回结果，只是结果被浏览器拦截了。</p>
+<h4 id="跨域解决方案（列出几个常用的）"><a href="#跨域解决方案（列出几个常用的）" class="headerlink" title="跨域解决方案（列出几个常用的）"></a>跨域解决方案（列出几个常用的）</h4><h5 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h5><blockquote>
+<p>它主要是利用script标签不受浏览器同源策略的限制，可以拿到从其他源传输过来的数据，需要服务端支持。</p>
+</blockquote>
+<p><strong>优缺点：</strong></p>
+<p>兼容性比较好，可用于解决主流浏览器的跨域数据访问的问题。缺点就是仅支持get请求，具有局限性，不安全，可能会受到XSS攻击。</p>
+<p><strong>思路：</strong></p>
+<ul>
+<li>  声明一个回调函数，其函数名(如show)当做参数值，要传递给跨域请求数据的服务器，函数形参为要获取目标数据(服务器返回的data)。</li>
+</ul>
+<!---->
+
+<ul>
+<li>  创建一个<code>&lt;script&gt;</code>标签，把那个跨域的API数据接口地址，赋值给script的src,还要在这个地址中向服务器传递该函数名（可以通过问号传参:?callback=show）。</li>
+</ul>
+<!---->
+
+<ul>
+<li>  服务器接收到请求后，需要进行特殊的处理：把传递进来的函数名和它需要给你的数据拼接成一个字符串,例如：传递进去的函数名是show，它准备好的数据是<code>show(&#39;南玖&#39;)</code>。</li>
+</ul>
+<!---->
+
+<ul>
+<li>  最后服务器把准备的数据通过HTTP协议返回给客户端，客户端再调用执行之前声明的回调函数（show），对返回的数据进行操作。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// front</span><br><span class="line">function jsonp(&#123; url, params, callback &#125;) &#123;</span><br><span class="line">  return new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">    let script = document.createElement(&#x27;script&#x27;)</span><br><span class="line">    window[callback] = function(data) &#123;</span><br><span class="line">      resolve(data)</span><br><span class="line">      document.body.removeChild(script)</span><br><span class="line">    &#125;</span><br><span class="line">    params = &#123; ...params, callback &#125; // wd=b&amp;callback=show</span><br><span class="line">    let arrs = []</span><br><span class="line">    for (let key in params) &#123;</span><br><span class="line">      arrs.push(`$&#123;key&#125;=$&#123;params[key]&#125;`)</span><br><span class="line">    &#125;</span><br><span class="line">    script.src = `$&#123;url&#125;?$&#123;arrs.join(&#x27;&amp;&#x27;)&#125;`</span><br><span class="line">    document.body.appendChild(script)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line">jsonp(&#123;</span><br><span class="line">  url: &#x27;http://localhost:3000/say&#x27;,</span><br><span class="line">  params: &#123; wd: &#x27;wxgongzhonghao&#x27; &#125;,</span><br><span class="line">  callback: &#x27;show&#x27;</span><br><span class="line">&#125;).then(data =&gt; &#123;</span><br><span class="line">  console.log(data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// server 借助express框架</span><br><span class="line">let express = require(&#x27;express&#x27;)</span><br><span class="line">let app = express()</span><br><span class="line">app.get(&#x27;/say&#x27;, function(req, res) &#123;</span><br><span class="line">  let &#123; wd, callback &#125; = req.query</span><br><span class="line">  console.log(wd) // Iloveyou</span><br><span class="line">  console.log(callback) // show</span><br><span class="line">  res.end(`$&#123;callback&#125;(&#x27;关注前端南玖&#x27;)`)</span><br><span class="line">&#125;)</span><br><span class="line">app.listen(3000)</span><br></pre></td></tr></table></figure>
+
+<p>上面这段代码相当于向<code>http://localhost:3000/say?wd=wxgongzhonghao&amp;callback=show</code>这个地址请求数据，然后后台返回<code>show(&#39;关注前端南玖&#39;)</code>，最后会运行show()这个函数，打印出’关注前端南玖’</p>
+<h5 id="跨域资源共享（CORS）"><a href="#跨域资源共享（CORS）" class="headerlink" title="跨域资源共享（CORS）"></a>跨域资源共享（CORS）</h5><blockquote>
+<p>CORS（Cross-Origin Resource Sharing）跨域资源共享，定义了必须在访问跨域资源时，浏览器与服务器应该如何沟通。CORS背后的基本思想是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功还是失败。</p>
+</blockquote>
+<p><strong>CORS 需要浏览器和后端同时支持。IE 8 和 9 需要通过 XDomainRequest 来实现</strong>。</p>
+<p>浏览器会自动进行 CORS 通信，实现 CORS 通信的关键是后端。只要后端实现了 CORS，就实现了跨域。</p>
+<p>服务端设置 Access-Control-Allow-Origin 就可以开启 CORS。 该属性表示哪些域名可以访问资源，如果设置通配符则表示所有网站都可以访问资源。</p>
+<p>虽然设置 CORS 和前端没什么关系，但是通过这种方式解决跨域问题的话，会在发送请求时出现两种情况，分别为<strong>简单请求</strong>和<strong>复杂请求</strong>。</p>
+<p><strong>简单请求：</strong> （满足以下两个条件，就是简单请求）</p>
+<p>1.请求方法为以下三个之一：</p>
+<ul>
+<li>  GET</li>
+<li>  POST</li>
+<li>  HEAD</li>
+</ul>
+<p>2.Content-Type的为以下三个之一：</p>
+<ul>
+<li>  text-plain</li>
+<li>  multiparty/form-data</li>
+<li>  application/x-www-form-urlencoded</li>
+</ul>
+<p><strong>复杂请求：</strong></p>
+<p>不是简单请求那它肯定就是复杂请求了。复杂请求的CORS请求，会在正式发起请求前，增加一次HTTP查询请求，称为<strong>预检</strong> 请求，该请求是option方法的，通过该请求来知道服务端是否允许该跨域请求。</p>
+<h5 id="Nginx反向代理"><a href="#Nginx反向代理" class="headerlink" title="Nginx反向代理"></a>Nginx反向代理</h5><blockquote>
+<p>Nginx 反向代理的原理很简单，即所有客户端的请求都必须经过nginx处理，nginx作为代理服务器再将请求转发给后端，这样就规避了浏览器的同源策略。</p>
+</blockquote>
+<h2 id="14-说说什么是XSS攻击"><a href="#14-说说什么是XSS攻击" class="headerlink" title="14.说说什么是XSS攻击"></a>14.说说什么是XSS攻击</h2><h4 id="什么是XSS？"><a href="#什么是XSS？" class="headerlink" title="什么是XSS？"></a>什么是XSS？</h4><blockquote>
+<p>XSS 全称是 <code>Cross Site Scripting</code>，为了与<code>css</code>区分开来，所以简称<code>XSS</code>，中文叫作<strong>跨站脚本</strong></p>
+<p>XSS是指黑客往页面中注入恶意脚本，从而在用户浏览页面时利用恶意脚本对用户实施攻击的一种手段。</p>
+</blockquote>
+<h4 id="XSS能够做什么？"><a href="#XSS能够做什么？" class="headerlink" title="XSS能够做什么？"></a>XSS能够做什么？</h4><ul>
+<li>  窃取Cookie</li>
+<li>  监听用户行为，比如输入账号密码后之间发给黑客服务器</li>
+<li>  在网页中生成浮窗广告</li>
+<li>  修改DOM伪造登入表单</li>
+</ul>
+<h4 id="XSS实现方式"><a href="#XSS实现方式" class="headerlink" title="XSS实现方式"></a>XSS实现方式</h4><ul>
+<li>  存储型XSS攻击</li>
+<li>  反射型XSS攻击</li>
+<li>  基于DOM的XSS攻击</li>
+</ul>
+<h4 id="如何阻止XSS攻击？"><a href="#如何阻止XSS攻击？" class="headerlink" title="如何阻止XSS攻击？"></a>如何阻止XSS攻击？</h4><p> <strong>对输入脚本进行过滤或转码</strong></p>
+<p> 对用户输入的信息过滤或者转码，保证用户输入的内容不能在HTML解析的时候执行。</p>
+<p> <strong>利用CSP</strong></p>
+<blockquote>
+<p>该安全策略的实现基于一个称作 <code>Content-Security-Policy</code>的HTTP首部。（浏览器内容安全策略）它的核心思想就是服务器决定浏览器加载那些资源。</p>
+</blockquote>
+<ul>
+<li>  限制加载其他域下的资源文件，这样即使黑客插入了一个 JavaScript 文件，这个 JavaScript 文件也是无法被加载的；</li>
+<li>  禁止向第三方域提交数据，这样用户数据也不会外泄；</li>
+<li>  提供上报机制，能帮助我们及时发现 XSS 攻击。</li>
+<li>  禁止执行内联脚本和未授权的脚本；</li>
+</ul>
+<p> <strong>利用 HttpOnly</strong></p>
+<blockquote>
+<p>由于很多 XSS 攻击都是来盗用 Cookie 的，因此还可以通过使用 HttpOnly 属性来保护我们 Cookie 的安全。这样子的话，JavaScript 便无法读取 Cookie 的值。这样也能很好的防范 XSS 攻击。</p>
+</blockquote>
+<p> 通常服务器可以将某些 Cookie 设置为 HttpOnly 标志，HttpOnly 是服务器通过 HTTP 响应头来设置的，下面是打开 Google 时，HTTP 响应头中的一段：</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set-cookie: NID=189=M8l6-z41asXtm2uEwcOC5oh9djkffOMhWqQrlnCtOI; expires=Sat, 18-Apr-2020 06:52:22 GMT; path=/; domain=.google.com; HttpOnly</span><br></pre></td></tr></table></figure>
+
+<p> <strong>对于不受信任的输入，可以限制输入长度</strong></p>
+<h2 id="15-说说什么是CSRF攻击？"><a href="#15-说说什么是CSRF攻击？" class="headerlink" title="15.说说什么是CSRF攻击？"></a>15.说说什么是CSRF攻击？</h2><h4 id="什么是CSRF攻击？"><a href="#什么是CSRF攻击？" class="headerlink" title="什么是CSRF攻击？"></a>什么是CSRF攻击？</h4><blockquote>
+<p>CSRF 全称 <code>Cross-site request forgery</code>，中文为<strong>跨站请求伪造</strong> ，攻击者诱导受害者进入第三方网站，在第三方网站中，向被攻击网站发送跨站请求。利用受害者在被攻击网站已经获取的注册凭证，绕过后台的用户验证，达到冒充用户对被攻击的网站执行某项操作的目的。 <strong>CSRF攻击就是黑客利用用户的登录状态，并通过第三方站点来干一些嘿嘿嘿的坏事</strong>。</p>
+</blockquote>
+<h4 id="几种常见的攻击类型"><a href="#几种常见的攻击类型" class="headerlink" title="几种常见的攻击类型"></a>几种常见的攻击类型</h4><h5 id="1-GET类型的CSRF"><a href="#1-GET类型的CSRF" class="headerlink" title="1.GET类型的CSRF"></a>1.GET类型的CSRF</h5><p>GET类型的CSRF非常简单，通常只需要一个HTTP请求：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;http://bank.example/withdraw?amount=10000&amp;for=hacker&quot; &gt; </span><br></pre></td></tr></table></figure>
+
+<p>在受害者访问含有这个img的页面后，浏览器会自动向<code>http://bank.example/withdraw?account=xiaoming&amp;amount=10000&amp;for=hacker</code>发出一次HTTP请求。bank.example就会收到包含受害者登录信息的一次跨域请求。</p>
+<h5 id="2-POST类型的CSRF"><a href="#2-POST类型的CSRF" class="headerlink" title="2.POST类型的CSRF"></a>2.POST类型的CSRF</h5><p>这种类型的CSRF利用起来通常使用的是一个自动提交的表单，如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> &lt;form action=&quot;http://bank.example/withdraw&quot; method=POST&gt;</span><br><span class="line">    &lt;input type=&quot;hidden&quot; name=&quot;account&quot; value=&quot;xiaoming&quot; /&gt;</span><br><span class="line">    &lt;input type=&quot;hidden&quot; name=&quot;amount&quot; value=&quot;10000&quot; /&gt;</span><br><span class="line">    &lt;input type=&quot;hidden&quot; name=&quot;for&quot; value=&quot;hacker&quot; /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;script&gt; document.forms[0].submit(); &lt;/script&gt; </span><br></pre></td></tr></table></figure>
+
+<p>访问该页面后，表单会自动提交，相当于模拟用户完成了一次POST操作。</p>
+<h5 id="3-链接类型的CSRF"><a href="#3-链接类型的CSRF" class="headerlink" title="3.链接类型的CSRF"></a>3.链接类型的CSRF</h5><p>链接类型的CSRF并不常见，比起其他两种用户打开页面就中招的情况，这种需要用户点击链接才会触发。这种类型通常是在论坛中发布的图片中嵌入恶意链接，或者以广告的形式诱导用户中招，攻击者通常会以比较夸张的词语诱骗用户点击，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  &lt;a href=&quot;http://test.com/csrf/withdraw.php?amount=1000&amp;for=hacker&quot; taget=&quot;_blank&quot;&gt;</span><br><span class="line">  重磅消息！！</span><br><span class="line">  &lt;a/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>由于之前用户登录了信任的网站A，并且保存登录状态，只要用户主动访问上面的这个PHP页面，则表示攻击成功。</p>
+<h4 id="CSRF的特点"><a href="#CSRF的特点" class="headerlink" title="CSRF的特点"></a>CSRF的特点</h4><ul>
+<li>  攻击一般发起在第三方网站，而不是被攻击的网站。被攻击的网站无法防止攻击发生。</li>
+<li>  攻击利用受害者在被攻击网站的登录凭证，冒充受害者提交操作；而不是直接窃取数据。</li>
+<li>  整个过程攻击者并不能获取到受害者的登录凭证，仅仅是“冒用”。</li>
+<li>  跨站请求可以用各种方式：图片URL、超链接、CORS、Form提交等等。部分请求方式可以直接嵌入在第三方论坛、文章中，难以进行追踪。</li>
+</ul>
+<p>CSRF通常是跨域的，因为外域通常更容易被攻击者掌控。但是如果本域下有容易被利用的功能，比如可以发图和链接的论坛和评论区，攻击可以直接在本域下进行，而且这种攻击更加危险。</p>
+<h4 id="防护策略"><a href="#防护策略" class="headerlink" title="防护策略"></a>防护策略</h4><p>黑客只能借助受害者的<code>cookie</code> 骗取服务器的信任，但是黑客并不能凭借拿到<strong>「cookie」</strong>，也看不到 <strong>「cookie」</strong>的内容。另外，对于服务器返回的结果，由于浏览器<strong>「同源策略」</strong>的限制，黑客也无法进行解析。</p>
+<blockquote>
+<p>这就告诉我们，我们要保护的对象是那些可以直接产生数据改变的服务，而对于读取数据的服务，则不需要进行<code>CSRF</code>的保护。而保护的关键，是 <strong>「在请求中放入黑客所不能伪造的信息」</strong></p>
+</blockquote>
+<h4 id="同源检测"><a href="#同源检测" class="headerlink" title="同源检测"></a>同源检测</h4><p>既然CSRF大多来自第三方网站，那么我们就直接禁止外域（或者不受信任的域名）对我们发起请求。</p>
+<p>那么问题来了，我们如何判断请求是否来自外域呢？</p>
+<p>在HTTP协议中，每一个异步请求都会携带两个Header，用于标记来源域名：</p>
+<ul>
+<li>  Origin Header</li>
+<li>  Referer Header</li>
+</ul>
+<p>这两个Header在浏览器发起请求时，大多数情况会自动带上，并且不能由前端自定义内容。 服务器可以通过解析这两个Header中的域名，确定请求的来源域。</p>
+<h5 id="使用Origin-Header确定来源域名"><a href="#使用Origin-Header确定来源域名" class="headerlink" title="使用Origin Header确定来源域名"></a>使用Origin Header确定来源域名</h5><p>在部分与CSRF有关的请求中，请求的Header中会携带Origin字段。字段内包含请求的域名（不包含path及query）。</p>
+<p>如果Origin存在，那么直接使用Origin中的字段确认来源域名就可以。</p>
+<p>但是Origin在以下两种情况下并不存在：</p>
+<ul>
+<li>  <strong>IE11同源策略：</strong> IE 11 不会在跨站CORS请求上添加Origin标头，Referer头将仍然是唯一的标识。最根本原因是因为IE 11对同源的定义和其他浏览器有不同，有两个主要的区别，可以参考<a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy%23IE_Exceptions">MDN Same-origin_policy#IE_Exceptions</a></li>
+<li>  <strong>302重定向：</strong> 在302重定向之后Origin不包含在重定向的请求中，因为Origin可能会被认为是其他来源的敏感信息。对于302重定向的情况来说都是定向到新的服务器上的URL，因此浏览器不想将Origin泄漏到新的服务器上。</li>
+</ul>
+<h5 id="使用Referer-Header确定来源域名"><a href="#使用Referer-Header确定来源域名" class="headerlink" title="使用Referer Header确定来源域名"></a>使用Referer Header确定来源域名</h5><p>根据HTTP协议，在HTTP头中有一个字段叫Referer，记录了该HTTP请求的来源地址。 对于Ajax请求，图片和script等资源请求，Referer为发起请求的页面地址。对于页面跳转，Referer为打开页面历史记录的前一个页面地址。因此我们使用Referer中链接的Origin部分可以得知请求的来源域名。</p>
+<p>这种方法并非万无一失，Referer的值是由浏览器提供的，虽然HTTP协议上有明确的要求，但是每个浏览器对于Referer的具体实现可能有差别，并不能保证浏览器自身没有安全漏洞。使用验证 Referer 值的方法，就是把安全性都依赖于第三方（即浏览器）来保障，从理论上来讲，这样并不是很安全。在部分情况下，攻击者可以隐藏，甚至修改自己请求的Referer。</p>
+<p>2014年，W3C的Web应用安全工作组发布了Referrer Policy草案，对浏览器该如何发送Referer做了详细的规定。截止现在新版浏览器大部分已经支持了这份草案，我们终于可以灵活地控制自己网站的Referer策略了。新版的Referrer Policy规定了五种Referer策略：No Referrer、No Referrer When Downgrade、Origin Only、Origin When Cross-origin、和 Unsafe URL。之前就存在的三种策略：never、default和always，在新标准里换了个名称。他们的对应关系如下：</p>
+<table>
+<thead>
+<tr>
+<th>策略名称</th>
+<th>属性值（新）</th>
+<th>属性值（旧）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>No Referrer</td>
+<td>no-Referrer</td>
+<td>never</td>
+</tr>
+<tr>
+<td>No Referrer When Downgrade</td>
+<td>no-Referrer-when-downgrade</td>
+<td>default</td>
+</tr>
+<tr>
+<td>Origin Only</td>
+<td>(same or strict) origin</td>
+<td>origin</td>
+</tr>
+<tr>
+<td>Origin When Cross Origin</td>
+<td>(strict) origin-when-crossorigin</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Unsafe URL</td>
+<td>unsafe-url</td>
+<td>always</td>
+</tr>
+</tbody></table>
+<p>根据上面的表格因此需要把Referrer Policy的策略设置成same-origin，对于同源的链接和引用，会发送Referer，referer值为Host不带Path；跨域访问则不携带Referer。例如：<code>aaa.com</code>引用<code>bbb.com</code>的资源，不会发送Referer。</p>
+<p>设置Referrer Policy的方法有三种：</p>
+<ol>
+<li> 在CSP设置</li>
+<li> 页面头部增加meta标签</li>
+<li> a标签增加referrerpolicy属性</li>
+</ol>
+<p>上面说的这些比较多，但我们可以知道一个问题：攻击者可以在自己的请求中隐藏Referer。如果攻击者将自己的请求这样填写：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;http://bank.example/withdraw?amount=10000&amp;for=hacker&quot; referrerpolicy=&quot;no-referrer&quot;&gt; </span><br></pre></td></tr></table></figure>
+
+<p>那么这个请求发起的攻击将不携带Referer。</p>
+<p>另外在以下情况下Referer没有或者不可信：</p>
+<p>1.IE6、7下使用window.location.href=url进行界面的跳转，会丢失Referer。</p>
+<p>2.IE6、7下使用window.open，也会缺失Referer。</p>
+<p>3.HTTPS页面跳转到HTTP页面，所有浏览器Referer都丢失。</p>
+<p>4.点击Flash上到达另外一个网站的时候，Referer的情况就比较杂乱，不太可信。</p>
+<h5 id="无法确认来源域名情况"><a href="#无法确认来源域名情况" class="headerlink" title="无法确认来源域名情况"></a>无法确认来源域名情况</h5><p>当Origin和Referer头文件不存在时该怎么办？如果Origin和Referer都不存在，建议直接进行阻止，特别是如果您没有使用随机CSRF Token（参考下方）作为第二次检查。</p>
+<h5 id="如何阻止外域请求"><a href="#如何阻止外域请求" class="headerlink" title="如何阻止外域请求"></a>如何阻止外域请求</h5><p>通过Header的验证，我们可以知道发起请求的来源域名，这些来源域名可能是网站本域，或者子域名，或者有授权的第三方域名，又或者来自不可信的未知域名。</p>
+<p>我们已经知道了请求域名是否是来自不可信的域名，我们直接阻止掉这些的请求，就能防御CSRF攻击了吗？</p>
+<p>且慢！当一个请求是页面请求（比如网站的主页），而来源是搜索引擎的链接（例如百度的搜索结果），也会被当成疑似CSRF攻击。所以在判断的时候需要过滤掉页面请求情况，通常Header符合以下情况：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Accept: text/html</span><br><span class="line">Method: GET</span><br></pre></td></tr></table></figure>
+
+<p>但相应的，页面请求就暴露在了CSRF的攻击范围之中。如果你的网站中，在页面的GET请求中对当前用户做了什么操作的话，防范就失效了。</p>
+<p>例如，下面的页面请求：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET https://example.com/addComment?comment=XXX&amp;dest=orderId</span><br></pre></td></tr></table></figure>
+
+<p>注：这种严格来说并不一定存在CSRF攻击的风险，但仍然有很多网站经常把主文档GET请求挂上参数来实现产品功能，但是这样做对于自身来说是存在安全风险的。</p>
+<p>另外，前面说过，CSRF大多数情况下来自第三方域名，但并不能排除本域发起。如果攻击者有权限在本域发布评论（含链接、图片等，统称UGC），那么它可以直接在本域发起攻击，这种情况下同源策略无法达到防护的作用。</p>
+<p>综上所述：同源验证是一个相对简单的防范方法，能够防范绝大多数的CSRF攻击。但这并不是万无一失的，对于安全性要求较高，或者有较多用户输入内容的网站，我们就要对关键的接口做额外的防护措施。</p>
+<h4 id="CSRF-Token"><a href="#CSRF-Token" class="headerlink" title="CSRF Token"></a>CSRF Token</h4><p>前面讲到CSRF的另一个特征是，攻击者无法直接窃取到用户的信息（Cookie，Header，网站内容等），仅仅是冒用Cookie中的信息。</p>
+<p>而CSRF攻击之所以能够成功，是因为服务器误把攻击者发送的请求当成了用户自己的请求。那么我们可以要求所有的用户请求都携带一个CSRF攻击者无法获取到的Token。服务器通过校验请求是否携带正确的Token，来把正常的请求和攻击的请求区分开，也可以防范CSRF的攻击。</p>
+<h4 id="利用Cookie的SameSite属性"><a href="#利用Cookie的SameSite属性" class="headerlink" title="利用Cookie的SameSite属性"></a>利用Cookie的SameSite属性</h4><p><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Set-Cookie/SameSite">可以看看MDN对此的解释</a></p>
+<p><code>SameSite</code>可以设置为三个值，<code>Strict</code>、<code>Lax</code>和<code>None</code>。</p>
+<ol>
+<li> 在<code>Strict</code>模式下，浏览器完全禁止第三方请求携带Cookie。比如请求<code>sanyuan.com</code>网站只能在<code>sanyuan.com</code>域名当中请求才能携带 Cookie，在其他网站请求都不能。</li>
+<li> 在<code>Lax</code>模式，就宽松一点了，但是只能在 <code>get 方法提交表单</code>况或者<code>a 标签发送 get 请求</code>的情况下可以携带 Cookie，其他情况均不能。</li>
+<li> 在None模式下，Cookie将在所有上下文中发送，即允许跨域发送。</li>
+</ol>
+<h2 id="点赞、关注和评论"><a href="#点赞、关注和评论" class="headerlink" title="点赞、关注和评论"></a>点赞、关注和评论</h2><p>我是<code>前端南玖</code>，感谢各位的：<strong>「点赞、关注和评论」</strong>，我们下期见！</p>
+<p>欢迎加入前端交流群<code>928029210</code>，这里有许多志同道合的前端开发者，一起交流～</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wx_scan.png" alt="songyao wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫一扫，欢迎关注前端南玖～</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持技术分享，您的支持将鼓励我继续创作～</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/wx_pay.jpg" alt="songyao 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/ali_pay.jpg" alt="songyao 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/11/01/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8/" rel="next" title="这一次带你彻底了解前端本地存储">
+                <i class="fa fa-chevron-left"></i> 这一次带你彻底了解前端本地存储
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/my.jpg"
+                alt="songyao" />
+            
+              <p class="site-author-name" itemprop="name">songyao</p>
+              <p class="site-description motion-element" itemprop="description">欢迎关注微信公众号：前端南玖</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/bettersong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:songyao666@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%B8%B8%E8%A7%81%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">1.常见的浏览器内核有哪些？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%86%85%E6%A0%B8%E5%8F%AF%E4%BB%A5%E5%88%86%E6%88%90%E4%B8%A4%E9%83%A8%E5%88%86%EF%BC%9A"><span class="nav-number">2.0.1.</span> <span class="nav-text">浏览器的内核可以分成两部分：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E4%B8%BB%E8%A6%81%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">2.浏览器的主要组成部分有哪些？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E8%AF%B4%E4%B8%80%E8%AF%B4%E4%BB%8E%E8%BE%93%E5%85%A5URL%E5%88%B0%E9%A1%B5%E9%9D%A2%E5%91%88%E7%8E%B0%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">3.说一说从输入URL到页面呈现发生了什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%AF%E5%A6%82%E4%BD%95%E8%A7%A3%E6%9E%90%E4%BB%A3%E7%A0%81%E7%9A%84%EF%BC%9F"><span class="nav-number">5.</span> <span class="nav-text">4.浏览器是如何解析代码的？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90HTML"><span class="nav-number">5.0.1.</span> <span class="nav-text">解析HTML</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90CSS"><span class="nav-number">5.0.2.</span> <span class="nav-text">解析CSS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90JS"><span class="nav-number">5.0.3.</span> <span class="nav-text">解析JS</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-DOMContentLoaded%E4%B8%8Eload%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">6.</span> <span class="nav-text">5.DOMContentLoaded与load的区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E6%B5%8F%E8%A7%88%E5%99%A8%E9%87%8D%E7%BB%98%E5%9F%9F%E9%87%8D%E6%8E%92%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">7.</span> <span class="nav-text">6.浏览器重绘域重排的区别？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A6%E5%8F%91%E9%87%8D%E7%BB%98%E5%92%8C%E9%87%8D%E6%8E%92%EF%BC%9F"><span class="nav-number">7.0.1.</span> <span class="nav-text">如何触发重绘和重排？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E9%87%8D%E7%BB%98%E6%88%96%E9%87%8D%E6%8E%92%EF%BC%9F"><span class="nav-number">7.0.2.</span> <span class="nav-text">如何避免重绘或重排？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E4%B8%BA%E4%BB%80%E4%B9%88JS%E6%98%AF%E5%8D%95%E7%BA%BF%E7%A8%8B%E7%9A%84%EF%BC%9F"><span class="nav-number">8.</span> <span class="nav-text">7.为什么JS是单线程的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-CSS%E5%8A%A0%E8%BD%BD%E4%BC%9A%E9%98%BB%E5%A1%9EDOM%E5%90%97%EF%BC%9F"><span class="nav-number">9.</span> <span class="nav-text">8.CSS加载会阻塞DOM吗？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%88%E4%B8%8A%E7%BB%93%E8%AE%BA"><span class="nav-number">9.0.1.</span> <span class="nav-text">先上结论</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSSOM%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">9.0.2.</span> <span class="nav-text">CSSOM的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JS%E9%9C%80%E8%A6%81%E7%AD%89%E5%BE%85CSS%E7%9A%84%E4%B8%8B%E8%BD%BD%EF%BC%8C%E8%BF%99%E6%98%AF%E4%B8%BA%E4%BB%80%E4%B9%88%E5%91%A2%EF%BC%9F%EF%BC%88CSS%E9%98%BB%E5%A1%9EDOM%E6%89%A7%E8%A1%8C%EF%BC%89"><span class="nav-number">9.0.3.</span> <span class="nav-text">JS需要等待CSS的下载，这是为什么呢？（CSS阻塞DOM执行）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%81%BF%E5%85%8D%E7%99%BD%E5%B1%8F%EF%BC%8C%E6%8F%90%E9%AB%98CSS%E7%9A%84%E5%8A%A0%E8%BD%BD%E9%80%9F%E5%BA%A6"><span class="nav-number">9.0.4.</span> <span class="nav-text">避免白屏，提高CSS的加载速度</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-JS%E4%BC%9A%E9%98%BB%E5%A1%9E%E9%A1%B5%E9%9D%A2%E5%90%97%EF%BC%9F"><span class="nav-number">10.</span> <span class="nav-text">9.JS会阻塞页面吗？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%88%E4%B8%8A%E7%BB%93%E8%AE%BA-1"><span class="nav-number">10.0.1.</span> <span class="nav-text">先上结论</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-defer%E5%92%8Casync%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">11.</span> <span class="nav-text">10.defer和async的区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6"><span class="nav-number">12.</span> <span class="nav-text">11.浏览器的垃圾回收机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4"><span class="nav-number">12.0.1.</span> <span class="nav-text">标记清除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0"><span class="nav-number">12.0.2.</span> <span class="nav-text">引用计数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F"><span class="nav-number">12.0.3.</span> <span class="nav-text">内存泄漏</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%93%AA%E4%BA%9B%E6%83%85%E5%86%B5%E4%BC%9A%E9%80%A0%E6%88%90%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%EF%BC%9F%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%EF%BC%9F"><span class="nav-number">12.0.3.1.</span> <span class="nav-text">哪些情况会造成内存泄漏？如何避免？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B%E5%8F%98%E9%87%8F%E7%9A%84%E5%86%85%E5%AD%98%E9%83%BD%E6%98%AF%E4%BD%95%E6%97%B6%E9%87%8A%E6%94%BE%E7%9A%84%EF%BC%9F"><span class="nav-number">12.0.3.2.</span> <span class="nav-text">浏览器中不同类型变量的内存都是何时释放的？</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-%E8%AF%B4%E4%B8%80%E8%AF%B4%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-number">13.</span> <span class="nav-text">12.说一说浏览器的缓存机制？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A4%E8%AF%86%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98"><span class="nav-number">13.0.1.</span> <span class="nav-text">认识浏览器缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E7%9F%A5%E9%81%93%E8%B5%84%E6%BA%90%E6%98%AF%E8%AF%B7%E6%B1%82%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%98%E6%98%AF%E8%AF%BB%E5%8F%96%E7%9A%84%E7%BC%93%E5%AD%98%E5%91%A2%EF%BC%9F"><span class="nav-number">13.0.2.</span> <span class="nav-text">如何知道资源是请求的服务器还是读取的缓存呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E5%88%86%E7%B1%BB"><span class="nav-number">13.0.3.</span> <span class="nav-text">浏览器缓存分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%BA%E7%BC%93%E5%AD%98"><span class="nav-number">13.0.4.</span> <span class="nav-text">强缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Expires"><span class="nav-number">13.0.4.1.</span> <span class="nav-text">Expires</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Cache-Control"><span class="nav-number">13.0.4.2.</span> <span class="nav-text">Cache-Control</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98"><span class="nav-number">13.0.5.</span> <span class="nav-text">协商缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Last-Modify-If-Modify-Since"><span class="nav-number">13.0.5.1.</span> <span class="nav-text">Last-Modify&#x2F;If-Modify-Since</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ETag-If-None-Match"><span class="nav-number">13.0.5.2.</span> <span class="nav-text">ETag&#x2F;If-None-Match</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">13.0.6.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-%E4%BB%80%E4%B9%88%E6%98%AF%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%EF%BC%8C%E4%BB%A5%E5%8F%8A%E8%B7%A8%E5%9F%9F%EF%BC%9F"><span class="nav-number">14.</span> <span class="nav-text">13.什么是浏览器的同源策略，以及跨域？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5"><span class="nav-number">14.0.1.</span> <span class="nav-text">同源策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B7%A8%E5%9F%9F"><span class="nav-number">14.0.2.</span> <span class="nav-text">跨域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B7%A8%E5%9F%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%88%E5%88%97%E5%87%BA%E5%87%A0%E4%B8%AA%E5%B8%B8%E7%94%A8%E7%9A%84%EF%BC%89"><span class="nav-number">14.0.3.</span> <span class="nav-text">跨域解决方案（列出几个常用的）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#JSONP"><span class="nav-number">14.0.3.1.</span> <span class="nav-text">JSONP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B7%A8%E5%9F%9F%E8%B5%84%E6%BA%90%E5%85%B1%E4%BA%AB%EF%BC%88CORS%EF%BC%89"><span class="nav-number">14.0.3.2.</span> <span class="nav-text">跨域资源共享（CORS）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86"><span class="nav-number">14.0.3.3.</span> <span class="nav-text">Nginx反向代理</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-%E8%AF%B4%E8%AF%B4%E4%BB%80%E4%B9%88%E6%98%AFXSS%E6%94%BB%E5%87%BB"><span class="nav-number">15.</span> <span class="nav-text">14.说说什么是XSS攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFXSS%EF%BC%9F"><span class="nav-number">15.0.1.</span> <span class="nav-text">什么是XSS？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#XSS%E8%83%BD%E5%A4%9F%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">15.0.2.</span> <span class="nav-text">XSS能够做什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#XSS%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="nav-number">15.0.3.</span> <span class="nav-text">XSS实现方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%98%BB%E6%AD%A2XSS%E6%94%BB%E5%87%BB%EF%BC%9F"><span class="nav-number">15.0.4.</span> <span class="nav-text">如何阻止XSS攻击？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-%E8%AF%B4%E8%AF%B4%E4%BB%80%E4%B9%88%E6%98%AFCSRF%E6%94%BB%E5%87%BB%EF%BC%9F"><span class="nav-number">16.</span> <span class="nav-text">15.说说什么是CSRF攻击？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFCSRF%E6%94%BB%E5%87%BB%EF%BC%9F"><span class="nav-number">16.0.1.</span> <span class="nav-text">什么是CSRF攻击？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%9A%84%E6%94%BB%E5%87%BB%E7%B1%BB%E5%9E%8B"><span class="nav-number">16.0.2.</span> <span class="nav-text">几种常见的攻击类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-GET%E7%B1%BB%E5%9E%8B%E7%9A%84CSRF"><span class="nav-number">16.0.2.1.</span> <span class="nav-text">1.GET类型的CSRF</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-POST%E7%B1%BB%E5%9E%8B%E7%9A%84CSRF"><span class="nav-number">16.0.2.2.</span> <span class="nav-text">2.POST类型的CSRF</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E9%93%BE%E6%8E%A5%E7%B1%BB%E5%9E%8B%E7%9A%84CSRF"><span class="nav-number">16.0.2.3.</span> <span class="nav-text">3.链接类型的CSRF</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSRF%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">16.0.3.</span> <span class="nav-text">CSRF的特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%98%B2%E6%8A%A4%E7%AD%96%E7%95%A5"><span class="nav-number">16.0.4.</span> <span class="nav-text">防护策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8C%E6%BA%90%E6%A3%80%E6%B5%8B"><span class="nav-number">16.0.5.</span> <span class="nav-text">同源检测</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Origin-Header%E7%A1%AE%E5%AE%9A%E6%9D%A5%E6%BA%90%E5%9F%9F%E5%90%8D"><span class="nav-number">16.0.5.1.</span> <span class="nav-text">使用Origin Header确定来源域名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Referer-Header%E7%A1%AE%E5%AE%9A%E6%9D%A5%E6%BA%90%E5%9F%9F%E5%90%8D"><span class="nav-number">16.0.5.2.</span> <span class="nav-text">使用Referer Header确定来源域名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%97%A0%E6%B3%95%E7%A1%AE%E8%AE%A4%E6%9D%A5%E6%BA%90%E5%9F%9F%E5%90%8D%E6%83%85%E5%86%B5"><span class="nav-number">16.0.5.3.</span> <span class="nav-text">无法确认来源域名情况</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%98%BB%E6%AD%A2%E5%A4%96%E5%9F%9F%E8%AF%B7%E6%B1%82"><span class="nav-number">16.0.5.4.</span> <span class="nav-text">如何阻止外域请求</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSRF-Token"><span class="nav-number">16.0.6.</span> <span class="nav-text">CSRF Token</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A9%E7%94%A8Cookie%E7%9A%84SameSite%E5%B1%9E%E6%80%A7"><span class="nav-number">16.0.7.</span> <span class="nav-text">利用Cookie的SameSite属性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%82%B9%E8%B5%9E%E3%80%81%E5%85%B3%E6%B3%A8%E5%92%8C%E8%AF%84%E8%AE%BA"><span class="nav-number">17.</span> <span class="nav-text">点赞、关注和评论</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">songyao</span>
+
+  
+</div>
+
+
+
+
+  <a target="_blank" rel="noopener" href="https://www.cnblogs.com/songyao666/" class="post-meta-divider">博客园</a>
+  <a target="_blank" rel="noopener" href="https://juejin.cn/user/219558057873005" class="post-meta-divider">掘金</a>
+  <span class="post-meta-divider">微信公众号：前端南玖</span>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://bettersong.github.io/2021/11/08/%E8%BF%99%E4%BA%9B%E6%B5%8F%E8%A7%88%E5%99%A8%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%8C%E7%9C%8B%E7%9C%8B%E4%BD%A0%E8%83%BD%E5%9B%9E%E7%AD%94%E5%87%A0%E4%B8%AA%EF%BC%9F/';
+          this.page.identifier = '2021/11/08/这些浏览器面试题，看看你能回答几个？/';
+          this.page.title = '这些浏览器面试题，看看你能回答几个？';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://bettersong.github.io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'wDxOQGAiCHeiIi0Dz7A7lfmS-gzGzoHsz',
+        appKey: 'NXodSccyH1EXXRVHD2bPQoVa',
+        placeholder: '留言区～',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+
+</html>

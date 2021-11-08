@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://bettersong.github.io/2021/11/08/%E8%BF%99%E4%BA%9B%E6%B5%8F%E8%A7%88%E5%99%A8%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%8C%E7%9C%8B%E7%9C%8B%E4%BD%A0%E8%83%BD%E5%9B%9E%E7%AD%94%E5%87%A0%E4%B8%AA%EF%BC%9F/</loc>
+    
+    <lastmod>2021-11-08</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://bettersong.github.io/2021/11/01/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8/</loc>
     
     <lastmod>2021-11-01</lastmod>
@@ -95,7 +102,7 @@
 
   <url>
     <loc>https://bettersong.github.io/</loc>
-    <lastmod>2021-11-01</lastmod>
+    <lastmod>2021-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -103,21 +110,21 @@
   
   <url>
     <loc>https://bettersong.github.io/tags/%E5%89%8D%E7%AB%AF/</loc>
-    <lastmod>2021-11-01</lastmod>
+    <lastmod>2021-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://bettersong.github.io/tags/git/</loc>
-    <lastmod>2021-11-01</lastmod>
+    <lastmod>2021-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://bettersong.github.io/tags/hexo/</loc>
-    <lastmod>2021-11-01</lastmod>
+    <lastmod>2021-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -126,28 +133,28 @@
   
   <url>
     <loc>https://bettersong.github.io/categories/javaScript/</loc>
-    <lastmod>2021-11-01</lastmod>
+    <lastmod>2021-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://bettersong.github.io/categories/git/</loc>
-    <lastmod>2021-11-01</lastmod>
+    <lastmod>2021-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://bettersong.github.io/categories/hexo/</loc>
-    <lastmod>2021-11-01</lastmod>
+    <lastmod>2021-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://bettersong.github.io/categories/%E9%9D%A2%E8%AF%95/</loc>
-    <lastmod>2021-11-01</lastmod>
+    <lastmod>2021-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
